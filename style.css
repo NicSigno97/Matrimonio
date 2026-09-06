@@ -61,42 +61,118 @@ a {
    HEADER
 ========================================= */
 
-.site-header {
+/* =========================================
+   HEADER TRASPARENTE
+========================================= */
 
+.site-header {
     position: fixed;
 
     top: 0;
     left: 0;
 
     width: 100%;
-
-    height: 70px;
+    height: 75px;
 
     display: flex;
-
     align-items: center;
     justify-content: space-between;
 
-    padding:
-        10px
-        20px;
+    padding: 8px 20px;
 
     z-index: 1000;
 
-    background:
-        rgba(255, 255, 255, 0.92);
+    /* Completamente trasparente */
+    background: transparent;
 
-    backdrop-filter: blur(12px);
+    /* Nessun bordo */
+    border: none;
 
-    border-bottom:
-        1px solid
-        rgba(23, 50, 77, 0.08);
+    /* Nessuna ombra */
+    box-shadow: none;
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.header-logo {
+    display: flex;
+    align-items: center;
+
+    height: 100%;
 }
 
 .header-logo img {
-
-    width: 85px;
+    width: 90px;
     height: auto;
+
+    object-fit: contain;
+}
+
+
+/* =========================================
+   MENU HAMBURGER
+========================================= */
+
+.menu-button {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+
+    gap: 6px;
+
+    padding: 0;
+    margin: 0;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    cursor: pointer;
+}
+
+
+/* Le tre linee del menu */
+
+.menu-button span {
+    display: block;
+
+    height: 1px;
+
+    background: #ffffff;
+
+    transition:
+        width 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* Linee */
+
+.menu-button span:nth-child(1) {
+    width: 28px;
+}
+
+.menu-button span:nth-child(2) {
+    width: 20px;
+}
+
+.menu-button span:nth-child(3) {
+    width: 28px;
+}
+
+
+/* Effetto hover */
+
+.menu-button:hover span:nth-child(2) {
+    width: 28px;
 }
 
 
