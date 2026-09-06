@@ -704,8 +704,8 @@ section {
 
     .hero-image {
         inset: 0 !important;
-         background-size:95% auto !important;
-         background-position: 30% center !important;
+         background-size:150% auto !important;
+         background-position: 45% center !important;
         transform: none !important;
     }
 
