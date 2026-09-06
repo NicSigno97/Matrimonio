@@ -848,36 +848,78 @@ section {
 }
 
 /* =====================================================
-MAPPA LOCATION
+LOCATION - DESIGN MODERNO
 ===================================================== */
 
 .location-section {
-margin-top: 100px;
+margin-top: 110px;
 width: 100%;
 }
 
+/* =====================================================
+TITOLO LOCATION
+===================================================== */
+
 .location-title {
-margin-bottom: 35px;
+margin-bottom: 32px;
+}
+
+.location-title .eyebrow {
+margin-bottom: 12px;
+color: #7894b0;
 }
 
 .location-title h3 {
 font-family: 'Playfair Display', serif;
-font-size: clamp(2.2rem, 6vw, 3.5rem);
+font-size: clamp(2.4rem, 6vw, 4rem);
 font-weight: 500;
 line-height: 1;
+color: #24364b;
+letter-spacing: -0.02em;
 }
 
+.location-address {
+margin-top: 14px;
+color: #6b7886;
+font-size: 15px;
+line-height: 1.7;
+font-weight: 300;
+}
+
+/* =====================================================
+MAPPA
+===================================================== */
+
 .map-container {
+position: relative;
+
+```
 width: 100%;
+
 overflow: hidden;
-border-radius: 2px;
-box-shadow: 0 15px 40px rgba(36, 54, 75, 0.12);
+
+border-radius: 18px;
+
+background: #eef1f4;
+
+box-shadow:
+    0 20px 50px rgba(36, 54, 75, 0.12),
+    0 4px 12px rgba(36, 54, 75, 0.05);
+```
+
 }
 
 .map-container iframe {
 display: block;
+
+```
 width: 100%;
-min-height: 450px;
+
+height: 480px;
+
+border: 0;
+```
+
 }
 
 /* =====================================================
@@ -885,108 +927,170 @@ PULSANTI MAPPA
 ===================================================== */
 
 .map-buttons {
-display: flex;
-justify-content: center;
-align-items: center;
-gap: 15px;
-margin-top: 25px;
-flex-wrap: wrap;
-}
-
-.map-button {
-display: inline-flex;
-align-items: center;
-justify-content: center;
+display: grid;
 
 ```
-min-height: 50px;
-padding: 15px 25px;
+grid-template-columns: repeat(2, 1fr);
 
-border-radius: 3px;
+gap: 14px;
+
+margin-top: 18px;
+```
+
+}
+
+/* Pulsante base */
+
+.map-button {
+position: relative;
+
+```
+display: flex;
+
+align-items: center;
+
+justify-content: center;
+
+min-height: 58px;
+
+padding: 17px 24px;
+
+border-radius: 12px;
 
 font-size: 12px;
+
 font-weight: 700;
+
 letter-spacing: 0.08em;
+
 text-transform: uppercase;
+
+text-align: center;
+
+overflow: hidden;
 
 transition:
     transform 0.25s ease,
     box-shadow 0.25s ease,
-    opacity 0.25s ease;
+    background 0.25s ease;
 ```
 
-}
-
-/* GOOGLE MAPS
-Bianco con scritta nera
-*/
-
-.google-maps-button {
-background: #ffffff;
-color: #111111;
-
-```
-border: 1px solid #d8d8d8;
-```
-
-}
-
-/* APPLE MAPS
-Blu con scritta bianca
-*/
-
-.apple-maps-button {
-background: #007aff;
-color: #ffffff;
-
-```
-border: 1px solid #007aff;
-```
-
-}
-
-.map-button:hover {
-transform: translateY(-2px);
-box-shadow: 0 8px 20px rgba(36, 54, 75, 0.15);
-}
-
-.apple-maps-button:hover {
-opacity: 0.9;
 }
 
 /* =====================================================
-MAPPA - SMARTPHONE
+GOOGLE MAPS
+===================================================== */
+
+.google-maps-button {
+background: #ffffff;
+
+
+color: #151515;
+
+border: 1px solid #e1e5e9;
+
+box-shadow:
+    0 5px 18px rgba(36, 54, 75, 0.07);
+
+
+}
+
+.google-maps-button:hover {
+background: #f8f9fa;
+
+
+transform: translateY(-3px);
+
+box-shadow:
+    0 12px 25px rgba(36, 54, 75, 0.12);
+
+
+}
+
+/* =====================================================
+APPLE MAPS
+===================================================== */
+
+.apple-maps-button {
+background: #007aff;
+
+
+color: #ffffff;
+
+border: 1px solid #007aff;
+
+box-shadow:
+    0 7px 20px rgba(0, 122, 255, 0.22);
+
+
+}
+
+.apple-maps-button:hover {
+background: #006ee6;
+
+
+transform: translateY(-3px);
+
+box-shadow:
+    0 14px 28px rgba(0, 122, 255, 0.28);
+
+
+}
+
+/* =====================================================
+MOBILE
 ===================================================== */
 
 @media (max-width: 599px) {
 
-```
 .location-section {
-    margin-top: 75px;
+    margin-top: 80px;
+}
+
+.location-title {
+    margin-bottom: 25px;
+}
+
+.location-title h3 {
+    font-size: 2.7rem;
+}
+
+.map-container {
+    border-radius: 15px;
+
+    box-shadow:
+        0 15px 35px rgba(36, 54, 75, 0.12);
 }
 
 .map-container iframe {
-    min-height: 350px;
+    height: 360px;
 }
 
 .map-buttons {
-    flex-direction: column;
-    gap: 12px;
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+
+    margin-top: 14px;
 }
 
 .map-button {
-    width: 100%;
-    min-height: 52px;
+    min-height: 55px;
+
+    border-radius: 11px;
+
+    padding: 15px 20px;
 }
-```
 
 }
 
 /* =====================================================
-MAPPA - DESKTOP
+DESKTOP
 ===================================================== */
 
 @media (min-width: 900px) {
+
+```
 .location-section {
     margin-top: 130px;
 }
@@ -996,10 +1100,6 @@ MAPPA - DESKTOP
 }
 
 .map-buttons {
-    justify-content: flex-start;
-}
-
-.map-button {
-    min-width: 210px;
+    max-width: 620px;
 }
 }
