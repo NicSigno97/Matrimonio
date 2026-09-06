@@ -1,277 +1,393 @@
 /* =====================================================
-   MENU
+   SCRIPT MATRIMONIO
 ===================================================== */
 
-const menuToggle = document.getElementById("menuToggle");
-const menuClose = document.getElementById("menuClose");
-const sideMenu = document.getElementById("sideMenu");
-const menuOverlay = document.getElementById("menuOverlay");
+document.addEventListener("DOMContentLoaded", function () {
 
+    /* =====================================================
+       ELEMENTI MENU
+    ===================================================== */
 
-function openMenu() {
+    const menuToggle = document.getElementById("menuToggle");
+    const menuClose = document.getElementById("menuClose");
+    const sideMenu = document.getElementById("sideMenu");
+    const menuOverlay = document.getElementById("menuOverlay");
 
-    if (sideMenu) {
-        sideMenu.classList.add("active");
+    /* =====================================================
+       APERTURA MENU
+    ===================================================== */
+
+    function openMenu() {
+
+        if (sideMenu) {
+            sideMenu.classList.add("active");
+        }
+
+        if (menuOverlay) {
+            menuOverlay.classList.add("active");
+        }
+
+        document.body.style.overflow = "hidden";
     }
+
+    /* =====================================================
+       CHIUSURA MENU
+    ===================================================== */
+
+    function closeMenu() {
+
+        if (sideMenu) {
+            sideMenu.classList.remove("active");
+        }
+
+        if (menuOverlay) {
+            menuOverlay.classList.remove("active");
+        }
+
+        document.body.style.overflow = "";
+    }
+
+    /* Pulsante hamburger */
+
+    if (menuToggle) {
+        menuToggle.addEventListener("click", openMenu);
+    }
+
+    /* Pulsante X */
+
+    if (menuClose) {
+        menuClose.addEventListener("click", closeMenu);
+    }
+
+    /* Overlay */
 
     if (menuOverlay) {
-        menuOverlay.classList.add("active");
+        menuOverlay.addEventListener("click", closeMenu);
     }
 
-    document.body.style.overflow = "hidden";
-}
 
+    /* =====================================================
+       LINK DEL MENU
+    ===================================================== */
 
-function closeMenu() {
+    const menuLinks = document.querySelectorAll(".side-menu a");
 
-    if (sideMenu) {
-        sideMenu.classList.remove("active");
-    }
+    menuLinks.forEach(function (link) {
 
-    if (menuOverlay) {
-        menuOverlay.classList.remove("active");
-    }
-
-    document.body.style.overflow = "";
-}
-
-
-/* Apertura menu */
-
-if (menuToggle) {
-    menuToggle.addEventListener("click", openMenu);
-}
-
-
-/* Chiusura con X */
-
-if (menuClose) {
-    menuClose.addEventListener("click", closeMenu);
-}
-
-
-/* Chiusura cliccando sull'overlay */
-
-if (menuOverlay) {
-    menuOverlay.addEventListener("click", closeMenu);
-}
-
-
-/* =====================================================
-   LINK DEL MENU
-===================================================== */
-
-const menuLinks = document.querySelectorAll(".side-menu a");
-
-menuLinks.forEach(function(link) {
-
-    link.addEventListener("click", function() {
-
-        closeMenu();
+        link.addEventListener("click", function () {
+            closeMenu();
+        });
 
     });
 
-});
+
+    /* =====================================================
+       CHIUSURA MENU CON ESC
+    ===================================================== */
+
+    document.addEventListener("keydown", function (event) {
+
+        if (event.key === "Escape") {
+            closeMenu();
+        }
+
+    });
 
 
-/* =====================================================
-   CHIUSURA CON ESC
-===================================================== */
+    /* =====================================================
+       ANIMAZIONI SCROLL
+    ===================================================== */
 
-document.addEventListener("keydown", function(event) {
+    const revealElements = document.querySelectorAll(".reveal");
 
-    if (
-        event.key === "Escape" &&
-        sideMenu &&
-        sideMenu.classList.contains("active")
-    ) {
+    /*
+       Mostriamo immediatamente gli elementi che si trovano
+       già nella schermata iniziale.
+    */
 
-        closeMenu();
+    function revealVisibleElements() {
+
+        revealElements.forEach(function (element) {
+
+            const rect = element.getBoundingClientRect();
+
+            if (
+                rect.top < window.innerHeight &&
+                rect.bottom > 0
+            ) {
+                element.classList.add("visible");
+            }
+
+        });
 
     }
 
-});
+
+    /*
+       IntersectionObserver
+    */
+
+    if ("IntersectionObserver" in window) {
+
+        const revealObserver = new IntersectionObserver(
+
+            function (entries) {
+
+                entries.forEach(function (entry) {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("visible");
+
+                        revealObserver.unobserve(entry.target);
+
+                    }
+
+                });
+
+            },
+
+            {
+                threshold: 0.08
+            }
+
+        );
 
 
-/* =====================================================
-   ANIMAZIONI DURANTE LO SCROLL
-===================================================== */
+        revealElements.forEach(function (element) {
 
-const revealElements =
-    document.querySelectorAll(".reveal");
+            revealObserver.observe(element);
+
+        });
+
+    } else {
+
+        /*
+           Fallback per browser meno recenti
+        */
+
+        revealElements.forEach(function (element) {
+
+            element.classList.add("visible");
+
+        });
+
+    }
 
 
-if ("IntersectionObserver" in window) {
+    /*
+       Controllo iniziale.
+       Serve soprattutto su smartphone.
+    */
 
-    const revealObserver = new IntersectionObserver(
+    revealVisibleElements();
 
-        function(entries) {
-
-            entries.forEach(function(entry) {
-
-                if (entry.isIntersecting) {
-
-                    entry.target.classList.add("visible");
-
-                    revealObserver.unobserve(entry.target);
-
-                }
-
-            });
-
-        },
-
-        {
-            threshold: 0.12
-        }
-
+    window.addEventListener(
+        "load",
+        revealVisibleElements
     );
 
 
-    revealElements.forEach(function(element) {
+    /* =====================================================
+       PARALLAX LEGGERO DELLA COPERTINA
+    ===================================================== */
 
-        revealObserver.observe(element);
+    const heroImage = document.querySelector(".hero-image");
 
-    });
+    if (heroImage) {
 
-} else {
+        window.addEventListener(
+            "scroll",
+            function () {
+
+                const scrollPosition = window.scrollY;
+
+                /*
+                   Applichiamo il movimento solo quando
+                   siamo nella zona della copertina.
+                */
+
+                if (scrollPosition < window.innerHeight) {
+
+                    const movement =
+                        scrollPosition * 0.08;
+
+                    heroImage.style.transform =
+                        "scale(1.05) translateY(" +
+                        movement +
+                        "px)";
+
+                }
+
+            },
+            {
+                passive: true
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       COLORE AUTOMATICO HAMBURGER
+    ===================================================== */
+
+    const menuLines =
+        document.querySelectorAll(".menu-toggle span");
+
+    const sections =
+        document.querySelectorAll("main section");
+
+
+    function setMenuColor(color) {
+
+        menuLines.forEach(function (line) {
+
+            line.style.backgroundColor = color;
+
+        });
+
+    }
+
 
     /*
-       Se il browser non supporta IntersectionObserver,
-       mostriamo comunque tutti gli elementi.
+       Colore iniziale:
+       bianco sulla copertina.
     */
 
-    revealElements.forEach(function(element) {
-
-        element.classList.add("visible");
-
-    });
-
-}
+    setMenuColor("#ffffff");
 
 
-/* =====================================================
-   PARALLAX LEGGERO DELLA COPERTINA
-===================================================== */
+    /*
+       Determina il colore dell'hamburger
+       in base alla sezione visibile.
+    */
 
-const heroImage =
-    document.querySelector(".hero-image");
+    function updateMenuColor() {
+
+        const viewportCenter =
+            window.innerHeight * 0.25;
+
+        let currentSection = null;
+
+        sections.forEach(function (section) {
+
+            const rect =
+                section.getBoundingClientRect();
+
+            if (
+                rect.top <= viewportCenter &&
+                rect.bottom >= viewportCenter
+            ) {
+                currentSection = section;
+            }
+
+        });
 
 
-window.addEventListener(
-    "scroll",
-    function() {
-
-        if (!heroImage) {
+        if (!currentSection) {
             return;
         }
 
-        const scrollPosition = window.scrollY;
 
+        /*
+           Home e Lista Nozze:
+           sfondo scuro → hamburger bianco
+        */
 
-        if (scrollPosition < window.innerHeight) {
+        if (
+            currentSection.id === "home" ||
+            currentSection.id === "lista"
+        ) {
 
-            heroImage.style.transform =
-                `scale(1.05) translateY(${scrollPosition * 0.12}px)`;
+            setMenuColor("#ffffff");
 
         }
 
-    },
-    {
-        passive: true
+        /*
+           Evento e Noi:
+           sfondo chiaro/blu → hamburger blu
+        */
+
+        else {
+
+            setMenuColor("#24364b");
+
+        }
+
     }
-);
 
 
-/* =====================================================
-   COLORE AUTOMATICO DEL MENU
-===================================================== */
+    /*
+       Aggiornamento iniziale
+    */
 
-const menuLines =
-    document.querySelectorAll(".menu-toggle span");
-
-
-const sections =
-    document.querySelectorAll("main section");
+    updateMenuColor();
 
 
-function setMenuColor(color) {
+    /*
+       Aggiornamento durante lo scroll
+    */
 
-    menuLines.forEach(function(line) {
-
-        line.style.background = color;
-
-    });
-
-}
-
-
-/*
-   All'inizio siamo sulla copertina,
-   quindi hamburger bianco.
-*/
-
-setMenuColor("white");
-
-
-if ("IntersectionObserver" in window) {
-
-    const colorObserver = new IntersectionObserver(
-
-        function(entries) {
-
-            entries.forEach(function(entry) {
-
-                if (!entry.isIntersecting) {
-                    return;
-                }
-
-
-                const section =
-                    entry.target;
-
-
-                /*
-                   Sezione scura:
-                   hamburger bianco.
-                */
-
-                if (
-                    section.id === "home" ||
-                    section.id === "lista"
-                ) {
-
-                    setMenuColor("white");
-
-                }
-
-
-                /*
-                   Sezione chiara/blu:
-                   hamburger blu.
-                */
-
-                else {
-
-                    setMenuColor("#24364b");
-
-                }
-
-            });
-
-        },
-
+    window.addEventListener(
+        "scroll",
+        updateMenuColor,
         {
-            threshold: 0.45
+            passive: true
         }
-
     );
 
 
-    sections.forEach(function(section) {
+    /*
+       Aggiornamento quando cambia la dimensione
+       dello schermo / rotazione smartphone
+    */
 
-        colorObserver.observe(section);
+    window.addEventListener(
+        "resize",
+        updateMenuColor
+    );
+
+
+    /* =====================================================
+       SMOOTH SCROLL
+    ===================================================== */
+
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+
+        link.addEventListener("click", function (event) {
+
+            const targetId =
+                this.getAttribute("href");
+
+            if (
+                !targetId ||
+                targetId === "#"
+            ) {
+                return;
+            }
+
+            const target =
+                document.querySelector(targetId);
+
+            if (!target) {
+                return;
+            }
+
+            event.preventDefault();
+
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        });
 
     });
 
-}
+
+    /* =====================================================
+       FINE SCRIPT
+    ===================================================== */
+
+});
