@@ -717,18 +717,7 @@ section {
 @media (max-width: 599px) {
 
     .hero-image {
-
-        /*
-           SPOSTAMENTO VERSO SINISTRA
-
-           50% = centro
-           43% = leggermente verso sinistra
-
-           In questo modo proviamo a mostrare
-           meglio entrambi i soggetti.
-        */
-        background-position: 25% center;
-
+        background-position: 20% center;
     }
 
 }
