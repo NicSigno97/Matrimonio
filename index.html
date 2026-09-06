@@ -1,59 +1,132 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Il nostro Matrimonio</title>
 
-    <meta name="description" content="Il nostro matrimonio">
+    <meta
+        name="description"
+        content="Il nostro matrimonio"
+    >
 
-    <link rel="stylesheet" href="style.css">
+    <!--
+        CSS
+        Il parametro ?v=2 forza il browser
+        a scaricare la nuova versione del file.
+    -->
+    <link
+        rel="stylesheet"
+        href="style.css?v=2"
+    >
+
 </head>
+
 
 <body>
 
-    <!-- HEADER -->
+
+    <!-- ==================================================
+         HEADER
+    =================================================== -->
+
     <header class="header">
 
-        <a href="#home" class="logo-link">
-            <img src="images/logo.png" alt="Logo" class="logo">
+        <a
+            href="#home"
+            class="logo-link"
+            aria-label="Torna alla Home"
+        >
+
+            <img
+                src="images/logo.png"
+                alt="Logo"
+                class="logo"
+            >
+
         </a>
 
-        <button class="menu-toggle" id="menuToggle" aria-label="Apri menu">
+
+        <!-- HAMBURGER -->
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Apri menu"
+            aria-expanded="false"
+            type="button"
+        >
+
             <span></span>
             <span></span>
             <span></span>
+
         </button>
 
     </header>
 
 
-    <!-- MENU LATERALE -->
-    <div class="menu-overlay" id="menuOverlay"></div>
 
-    <nav class="side-menu" id="sideMenu">
+    <!-- ==================================================
+         MENU LATERALE
+    =================================================== -->
 
-        <button class="menu-close" id="menuClose" aria-label="Chiudi menu">
+    <div
+        class="menu-overlay"
+        id="menuOverlay"
+    ></div>
+
+
+    <nav
+        class="side-menu"
+        id="sideMenu"
+        aria-label="Menu principale"
+    >
+
+        <button
+            class="menu-close"
+            id="menuClose"
+            aria-label="Chiudi menu"
+            type="button"
+        >
             ×
         </button>
+
 
         <ul>
 
             <li>
-                <a href="#home">Home</a>
+                <a href="#home">
+                    Home
+                </a>
             </li>
 
-            <li>
-                <a href="#evento">Informazioni sull'Evento</a>
-            </li>
 
             <li>
-                <a href="#noi">Un po' di Noi</a>
+                <a href="#evento">
+                    Informazioni sull'Evento
+                </a>
             </li>
 
+
             <li>
-                <a href="lista-nozze.html">Lista Nozze</a>
+                <a href="#noi">
+                    Un po' di Noi
+                </a>
+            </li>
+
+
+            <li>
+                <a href="lista-nozze.html">
+                    Lista Nozze
+                </a>
             </li>
 
         </ul>
@@ -61,15 +134,27 @@
     </nav>
 
 
-    <!-- CONTENUTO -->
+
+    <!-- ==================================================
+         CONTENUTO PRINCIPALE
+    =================================================== -->
+
     <main>
 
-        <!-- HOME -->
-        <section id="home" class="hero section-dark">
+
+        <!-- ==================================================
+             HOME
+        =================================================== -->
+
+        <section
+            id="home"
+            class="hero section-dark"
+        >
 
             <div class="hero-image"></div>
 
             <div class="hero-overlay"></div>
+
 
             <div class="hero-content reveal">
 
@@ -77,19 +162,26 @@
                     IL NOSTRO GIORNO
                 </p>
 
+
                 <h1>
                     Il nostro<br>
                     Matrimonio
                 </h1>
 
+
                 <div class="decorative-line"></div>
+
 
                 <p class="hero-text">
                     Una giornata speciale da vivere
                     insieme alle persone che amiamo.
                 </p>
 
-                <a href="#evento" class="scroll-button">
+
+                <a
+                    href="#evento"
+                    class="scroll-button"
+                >
                     Scopri di più
                     <span>↓</span>
                 </a>
@@ -99,10 +191,20 @@
         </section>
 
 
-        <!-- EVENTO -->
-        <section id="evento" class="section section-light">
+
+        <!-- ==================================================
+             INFORMAZIONI EVENTO
+        =================================================== -->
+
+        <section
+            id="evento"
+            class="section section-light"
+        >
 
             <div class="container">
+
+
+                <!-- TITOLO -->
 
                 <div class="section-title reveal">
 
@@ -110,17 +212,25 @@
                         IL GRANDE GIORNO
                     </p>
 
+
                     <h2>
                         Informazioni<br>
                         sull'Evento
                     </h2>
+
 
                     <div class="blue-line"></div>
 
                 </div>
 
 
+
+                <!-- CONTENUTO EVENTO -->
+
                 <div class="event-grid">
+
+
+                    <!-- IMMAGINE -->
 
                     <div class="event-image reveal">
 
@@ -132,7 +242,13 @@
                     </div>
 
 
+
+                    <!-- INFORMAZIONI -->
+
                     <div class="event-info reveal">
+
+
+                        <!-- CERIMONIA -->
 
                         <div class="info-item">
 
@@ -140,17 +256,26 @@
                                 01
                             </span>
 
+
                             <div>
-                                <h3>La Cerimonia</h3>
+
+                                <h3>
+                                    La Cerimonia
+                                </h3>
+
 
                                 <p>
                                     Qui potrai inserire le informazioni
                                     relative alla cerimonia.
                                 </p>
+
                             </div>
 
                         </div>
 
+
+
+                        <!-- RICEVIMENTO -->
 
                         <div class="info-item">
 
@@ -158,17 +283,26 @@
                                 02
                             </span>
 
+
                             <div>
-                                <h3>Il Ricevimento</h3>
+
+                                <h3>
+                                    Il Ricevimento
+                                </h3>
+
 
                                 <p>
                                     Qui potrai inserire le informazioni
                                     relative al ricevimento.
                                 </p>
+
                             </div>
 
                         </div>
 
+
+
+                        <!-- ORARIO -->
 
                         <div class="info-item">
 
@@ -176,13 +310,19 @@
                                 03
                             </span>
 
+
                             <div>
-                                <h3>Orario</h3>
+
+                                <h3>
+                                    Orario
+                                </h3>
+
 
                                 <p>
                                     Inserisci qui l'orario
                                     della cerimonia e del ricevimento.
                                 </p>
+
                             </div>
 
                         </div>
@@ -196,10 +336,20 @@
         </section>
 
 
-        <!-- NOI -->
-        <section id="noi" class="section section-blue">
+
+        <!-- ==================================================
+             UN PO' DI NOI
+        =================================================== -->
+
+        <section
+            id="noi"
+            class="section section-blue"
+        >
 
             <div class="container">
+
+
+                <!-- TITOLO -->
 
                 <div class="section-title reveal">
 
@@ -207,17 +357,23 @@
                         LA NOSTRA STORIA
                     </p>
 
+
                     <h2>
                         Un po'<br>
                         di Noi
                     </h2>
+
 
                     <div class="white-line"></div>
 
                 </div>
 
 
+
+                <!-- STORIA -->
+
                 <div class="story reveal">
+
 
                     <p class="story-large">
                         Due persone, una storia,
@@ -225,12 +381,14 @@
                         tutto da vivere insieme.
                     </p>
 
+
                     <p>
                         Qui possiamo raccontare la nostra storia,
                         come ci siamo conosciuti, i momenti più
                         importanti e tutto ciò che ci ha portati
                         fino a questo giorno speciale.
                     </p>
+
 
                     <p>
                         Sarà bellissimo condividere questo momento
@@ -244,12 +402,20 @@
         </section>
 
 
-        <!-- LISTA NOZZE -->
-        <section id="lista" class="section registry-preview section-dark">
+
+        <!-- ==================================================
+             ANTEPRIMA LISTA NOZZE
+        =================================================== -->
+
+        <section
+            id="lista"
+            class="section registry-preview section-dark"
+        >
 
             <div class="registry-background"></div>
 
             <div class="registry-overlay"></div>
+
 
             <div class="container registry-content reveal">
 
@@ -257,11 +423,14 @@
                     UN PICCOLO AIUTO PER IL NOSTRO FUTURO
                 </p>
 
+
                 <h2>
                     Lista Nozze
                 </h2>
 
+
                 <div class="white-line"></div>
+
 
                 <p>
                     Se desiderate accompagnarci in questo
@@ -269,7 +438,11 @@
                     abbiamo preparato una lista nozze.
                 </p>
 
-                <a href="lista-nozze.html" class="button-light">
+
+                <a
+                    href="lista-nozze.html"
+                    class="button-light"
+                >
                     Vai alla Lista Nozze
                 </a>
 
@@ -280,12 +453,17 @@
     </main>
 
 
-    <!-- FOOTER -->
+
+    <!-- ==================================================
+         FOOTER
+    =================================================== -->
+
     <footer class="footer">
 
         <p>
             Con amore ♡
         </p>
+
 
         <p class="footer-small">
             Il nostro Matrimonio
@@ -294,7 +472,15 @@
     </footer>
 
 
-    <script src="script.js"></script>
+
+    <!-- ==================================================
+         JAVASCRIPT
+         ?v=2 = anti-cache
+    =================================================== -->
+
+    <script src="script.js?v=2"></script>
+
 
 </body>
+
 </html>
