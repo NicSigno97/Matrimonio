@@ -1,182 +1,196 @@
-/* =========================================
+/* =====================================================
    MENU
-========================================= */
+===================================================== */
 
-const menuButton = document.getElementById("menuButton");
-const closeMenu = document.getElementById("closeMenu");
+const menuToggle = document.getElementById("menuToggle");
+const menuClose = document.getElementById("menuClose");
 const sideMenu = document.getElementById("sideMenu");
 const menuOverlay = document.getElementById("menuOverlay");
-const menuLinks = document.querySelectorAll(".menu-link");
 
 
 function openMenu() {
 
     sideMenu.classList.add("active");
-    menuOverlay.classList.add("active");
 
-    menuButton.setAttribute(
-        "aria-expanded",
-        "true"
-    );
+    menuOverlay.classList.add("active");
 
     document.body.style.overflow = "hidden";
 }
 
 
-function closeSideMenu() {
+function closeMenu() {
 
     sideMenu.classList.remove("active");
-    menuOverlay.classList.remove("active");
 
-    menuButton.setAttribute(
-        "aria-expanded",
-        "false"
-    );
+    menuOverlay.classList.remove("active");
 
     document.body.style.overflow = "";
 }
 
 
-menuButton.addEventListener(
-    "click",
-    openMenu
-);
+if (menuToggle) {
+    menuToggle.addEventListener("click", openMenu);
+}
 
 
-closeMenu.addEventListener(
-    "click",
-    closeSideMenu
-);
+if (menuClose) {
+    menuClose.addEventListener("click", closeMenu);
+}
 
 
-menuOverlay.addEventListener(
-    "click",
-    closeSideMenu
-);
+if (menuOverlay) {
+    menuOverlay.addEventListener("click", closeMenu);
+}
 
 
-menuLinks.forEach(link => {
+/* =====================================================
+   CHIUDI MENU QUANDO SI CLICCA SU UN LINK
+===================================================== */
 
-    link.addEventListener(
-        "click",
-        closeSideMenu
-    );
+const menuLinks = document.querySelectorAll(".side-menu a");
+
+menuLinks.forEach(function(link) {
+
+    link.addEventListener("click", function() {
+
+        closeMenu();
+
+    });
 
 });
 
 
-/* =========================================
-   CHIUDI MENU CON ESC
-========================================= */
+/* =====================================================
+   ANIMAZIONI ALLO SCROLL
+===================================================== */
 
-document.addEventListener(
-    "keydown",
-    event => {
+const revealElements = document.querySelectorAll(".reveal");
 
-        if (
-            event.key === "Escape" &&
-            sideMenu.classList.contains("active")
-        ) {
 
-            closeSideMenu();
+const observer = new IntersectionObserver(
 
-        }
+    function(entries) {
 
+        entries.forEach(function(entry) {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("visible");
+
+            }
+
+        });
+
+    },
+
+    {
+        threshold: 0.15
     }
+
 );
 
 
-/* =========================================
-   ANIMAZIONI DURANTE LO SCROLL
-========================================= */
+revealElements.forEach(function(element) {
 
-const revealElements =
-    document.querySelectorAll(".reveal");
+    observer.observe(element);
+
+});
 
 
-const revealObserver =
-    new IntersectionObserver(
-        entries => {
+/* =====================================================
+   COLORE HAMBURGER AUTOMATICO
+===================================================== */
 
-            entries.forEach(entry => {
+const menuLines = document.querySelectorAll(".menu-toggle span");
 
-                if (entry.isIntersecting) {
 
-                    entry.target.classList.add(
-                        "visible"
-                    );
+const darkSections = document.querySelectorAll(
+    ".section-dark, .registry-preview"
+);
 
-                    revealObserver.unobserve(
-                        entry.target
-                    );
+
+const lightSections = document.querySelectorAll(
+    ".section-light, .section-blue"
+);
+
+
+function setMenuColor(color) {
+
+    menuLines.forEach(function(line) {
+
+        line.style.background = color;
+
+    });
+
+}
+
+
+const sectionObserver = new IntersectionObserver(
+
+    function(entries) {
+
+        entries.forEach(function(entry) {
+
+            if (entry.isIntersecting) {
+
+                if (
+                    entry.target.classList.contains("section-dark") ||
+                    entry.target.classList.contains("registry-preview")
+                ) {
+
+                    setMenuColor("white");
+
+                } else {
+
+                    setMenuColor("#24364b");
 
                 }
 
-            });
+            }
 
-        },
-        {
-            threshold: 0.12
-        }
-    );
+        });
+
+    },
+
+    {
+        threshold: 0.5
+    }
+
+);
 
 
-revealElements.forEach(element => {
+darkSections.forEach(function(section) {
 
-    revealObserver.observe(element);
+    sectionObserver.observe(section);
 
 });
 
 
-/* =========================================
-   AGGIUNTA RITARDO ALLE ANIMAZIONI
-========================================= */
+lightSections.forEach(function(section) {
 
-const cards =
-    document.querySelectorAll(".event-card");
+    sectionObserver.observe(section);
+
+});
 
 
-cards.forEach(
-    (card, index) => {
+/* =====================================================
+   PARALLAX LEGGERO IMMAGINE HERO
+===================================================== */
 
-        card.style.transitionDelay =
-            `${index * 120}ms`;
+const heroImage = document.querySelector(".hero-image");
+
+
+window.addEventListener("scroll", function() {
+
+    if (!heroImage) return;
+
+    const scrollPosition = window.scrollY;
+
+    if (scrollPosition < window.innerHeight) {
+
+        heroImage.style.transform =
+            `scale(1.05) translateY(${scrollPosition * 0.12}px)`;
 
     }
-);
 
-
-/* =========================================
-   PARALLAX LEGGERO HERO
-========================================= */
-
-const heroImage =
-    document.querySelector(".hero-image");
-
-
-window.addEventListener(
-    "scroll",
-    () => {
-
-        if (!heroImage) {
-            return;
-        }
-
-        const scrollPosition =
-            window.scrollY;
-
-        if (
-            scrollPosition <
-            window.innerHeight
-        ) {
-
-            heroImage.style.transform =
-                `translateY(${scrollPosition * 0.15}px)`;
-
-        }
-
-    },
-    {
-        passive: true
-    }
-);
+});
