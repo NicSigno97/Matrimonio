@@ -739,6 +739,7 @@ section {
     background-size: cover;
     background-position: 70% 50% center;
     transform: scale(1.05);
+    z-index: 0;
 }
 
 /* =====================================================
