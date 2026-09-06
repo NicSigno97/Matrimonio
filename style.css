@@ -846,3 +846,160 @@ section {
         animation-duration: 0.01ms !important;
     }
 }
+
+/* =====================================================
+MAPPA LOCATION
+===================================================== */
+
+.location-section {
+margin-top: 100px;
+width: 100%;
+}
+
+.location-title {
+margin-bottom: 35px;
+}
+
+.location-title h3 {
+font-family: 'Playfair Display', serif;
+font-size: clamp(2.2rem, 6vw, 3.5rem);
+font-weight: 500;
+line-height: 1;
+}
+
+.map-container {
+width: 100%;
+overflow: hidden;
+border-radius: 2px;
+box-shadow: 0 15px 40px rgba(36, 54, 75, 0.12);
+}
+
+.map-container iframe {
+display: block;
+width: 100%;
+min-height: 450px;
+}
+
+/* =====================================================
+PULSANTI MAPPA
+===================================================== */
+
+.map-buttons {
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 15px;
+margin-top: 25px;
+flex-wrap: wrap;
+}
+
+.map-button {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
+```
+min-height: 50px;
+padding: 15px 25px;
+
+border-radius: 3px;
+
+font-size: 12px;
+font-weight: 700;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+
+transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    opacity 0.25s ease;
+```
+
+}
+
+/* GOOGLE MAPS
+Bianco con scritta nera
+*/
+
+.google-maps-button {
+background: #ffffff;
+color: #111111;
+
+```
+border: 1px solid #d8d8d8;
+```
+
+}
+
+/* APPLE MAPS
+Blu con scritta bianca
+*/
+
+.apple-maps-button {
+background: #007aff;
+color: #ffffff;
+
+```
+border: 1px solid #007aff;
+```
+
+}
+
+.map-button:hover {
+transform: translateY(-2px);
+box-shadow: 0 8px 20px rgba(36, 54, 75, 0.15);
+}
+
+.apple-maps-button:hover {
+opacity: 0.9;
+}
+
+/* =====================================================
+MAPPA - SMARTPHONE
+===================================================== */
+
+@media (max-width: 599px) {
+
+```
+.location-section {
+    margin-top: 75px;
+}
+
+.map-container iframe {
+    min-height: 350px;
+}
+
+.map-buttons {
+    flex-direction: column;
+    gap: 12px;
+}
+
+.map-button {
+    width: 100%;
+    min-height: 52px;
+}
+```
+
+}
+
+/* =====================================================
+MAPPA - DESKTOP
+===================================================== */
+
+@media (min-width: 900px) {
+.location-section {
+    margin-top: 130px;
+}
+
+.map-container iframe {
+    height: 500px;
+}
+
+.map-buttons {
+    justify-content: flex-start;
+}
+
+.map-button {
+    min-width: 210px;
+}
+}
