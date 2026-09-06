@@ -814,8 +814,9 @@ section {
 ===================================================== */
 
 .map-section {
-    padding: 90px 25px;
+    padding: 100px 20px;
     text-align: center;
+    background: #ffffff;
 }
 
 .map-section .section-title {
@@ -824,43 +825,46 @@ section {
 
 .map-section .section-title span {
     display: block;
-    margin-bottom: 12px;
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+
+    margin-bottom: 18px;
 }
 
 .map-section .section-title h2 {
-    margin-bottom: 10px;
+    font-family: 'Playfair Display', serif;
+
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+
+    font-weight: 500;
+    line-height: 1;
+
+    margin-bottom: 15px;
 }
 
 .map-section .section-title p {
-    margin-bottom: 0;
+    color: #5c6c7d;
+
+    font-size: 15px;
+    line-height: 1.7;
 }
 
 
-/* CONTENITORE MAPPA + PULSANTE */
-
-.map-wrapper {
-    width: 100%;
-    max-width: 950px;
-    margin: 0 auto;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 35px;
-}
-
-
-/* MAPPA */
+/* MAPPA CENTRATA */
 
 .map-container {
-    width: 100%;
-    max-width: 700px;
+    width: 90%;
+    max-width: 750px;
+
+    margin: 0 auto 35px;
 
     overflow: hidden;
 
-    border-radius: 18px;
+    border-radius: 20px;
 
-    box-shadow: 0 10px 35px rgba(36, 54, 75, 0.12);
+    box-shadow: 0 12px 35px rgba(36, 54, 75, 0.12);
 }
 
 .map-container iframe {
@@ -873,71 +877,66 @@ section {
 }
 
 
-/* PULSANTE GOOGLE MAPS */
+/* PULSANTE */
 
 .map-button {
-    flex-shrink: 0;
-
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
 
-    min-width: 190px;
-
-    padding: 16px 24px;
+    padding: 15px 30px;
 
     background: #7894b0;
     color: white;
 
-    border: 1px solid #7894b0;
     border-radius: 30px;
 
-    font-family: 'Lato', sans-serif;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
 
-    letter-spacing: 0.08em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
 
-    box-shadow: 0 8px 20px rgba(36, 54, 75, 0.18);
+    transition: all 0.3s ease;
 
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        background 0.3s ease;
+    box-shadow: 0 8px 20px rgba(36, 54, 75, 0.15);
 }
 
 .map-button:hover {
     background: #24364b;
-    border-color: #24364b;
 
     transform: translateY(-3px);
 
-    box-shadow: 0 12px 25px rgba(36, 54, 75, 0.25);
+    box-shadow: 0 12px 25px rgba(36, 54, 75, 0.22);
 }
 
 
 /* =====================================================
-   MAPPA - SMARTPHONE
+   SMARTPHONE
 ===================================================== */
 
 @media (max-width: 599px) {
 
     .map-section {
-        padding: 70px 20px;
+        padding: 75px 20px;
     }
 
     .map-section .section-title {
         margin-bottom: 30px;
     }
 
-    .map-wrapper {
-        flex-direction: column;
-        gap: 25px;
+    .map-section .section-title h2 {
+        font-size: 2.8rem;
+    }
+
+    .map-section .section-title p {
+        font-size: 14px;
     }
 
     .map-container {
-        max-width: 100%;
+        width: 100%;
+        margin-bottom: 30px;
         border-radius: 15px;
     }
 
@@ -946,7 +945,6 @@ section {
     }
 
     .map-button {
-        min-width: 210px;
-        padding: 15px 25px;
+        padding: 14px 25px;
     }
 }
