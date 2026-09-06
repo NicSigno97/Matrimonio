@@ -701,7 +701,7 @@ section {
 /* =====================================================
    SMARTPHONE
 ===================================================== */
-
+@media (max-width: 599px) {
 .hero-image {
     inset: 0 !important;
     background-size: cover !important;
