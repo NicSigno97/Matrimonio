@@ -2,17 +2,364 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Il nostro matrimonio</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
+    <meta name="theme-color" content="#ffffff">
+
+    <meta name="description"
+          content="Il nostro matrimonio">
+
+    <title>Matrimonio</title>
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+          rel="stylesheet">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <h1>Il nostro matrimonio</h1>
+    <!-- =========================
+         HEADER
+    ========================== -->
 
+    <header class="site-header">
+
+    <a href="#home" class="header-logo">
+        <img src="images/logo.png" alt="Matrimonio">
+    </a>
+
+    <button class="menu-button"
+            id="menuButton"
+            aria-label="Apri menu"
+            aria-expanded="false">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+</header>
+
+
+    <!-- =========================
+         MENU
+    ========================== -->
+
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <nav class="side-menu" id="sideMenu">
+
+        <div class="menu-header">
+
+            <span>MENU</span>
+
+            <button class="close-menu"
+                    id="closeMenu"
+                    aria-label="Chiudi menu">
+                ×
+            </button>
+
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="#home" class="menu-link">
+                    <span>01</span>
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="#evento" class="menu-link">
+                    <span>02</span>
+                    Informazioni sull'Evento
+                </a>
+            </li>
+
+            <li>
+                <a href="#noi" class="menu-link">
+                    <span>03</span>
+                    Un po' di Noi
+                </a>
+            </li>
+
+            <li>
+                <a href="#lista" class="menu-link">
+                    <span>04</span>
+                    Lista Nozze
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         CONTENUTO
+    ========================== -->
+
+    <main>
+
+
+        <!-- =========================
+             HOME
+        ========================== -->
+
+        <section id="home" class="hero">
+
+            <div class="hero-background">
+
+                <img src="images/foto1 (1).jpeg"
+                     alt=""
+                     class="hero-image">
+
+            </div>
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content reveal">
+
+                <img src="images/logo.png"
+                     alt="Logo matrimonio"
+                     class="hero-logo">
+
+                <p class="hero-intro">
+                    Il nostro giorno speciale
+                </p>
+
+                <h1>
+                    Nome <span>&</span> Nome
+                </h1>
+
+                <p class="hero-date">
+                    00 · 00 · 0000
+                </p>
+
+                <div class="scroll-indicator">
+                    <span>Scorri per scoprire</span>
+                    <div class="scroll-line"></div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             EVENTO
+        ========================== -->
+
+        <section id="evento" class="section event-section">
+
+            <div class="section-container">
+
+                <div class="section-heading reveal">
+
+                    <span class="section-number">02</span>
+
+                    <p class="eyebrow">
+                        Il nostro giorno
+                    </p>
+
+                    <h2>
+                        Informazioni<br>
+                        sull'Evento
+                    </h2>
+
+                </div>
+
+
+                <div class="event-grid">
+
+                    <article class="event-card reveal">
+
+                        <span class="event-icon">♡</span>
+
+                        <h3>
+                            La Cerimonia
+                        </h3>
+
+                        <p>
+                            Data e orario della cerimonia.
+                        </p>
+
+                        <p class="event-detail">
+                            00 · 00 · 0000<br>
+                            Ore 00:00
+                        </p>
+
+                    </article>
+
+
+                    <article class="event-card reveal">
+
+                        <span class="event-icon">⌂</span>
+
+                        <h3>
+                            Il Ricevimento
+                        </h3>
+
+                        <p>
+                            Vi aspettiamo per festeggiare
+                            insieme il nostro giorno speciale.
+                        </p>
+
+                        <p class="event-detail">
+                            Nome Location<br>
+                            Indirizzo
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             UN PO' DI NOI
+        ========================== -->
+
+        <section id="noi" class="section story-section">
+
+            <div class="section-container">
+
+                <div class="section-heading reveal">
+
+                    <span class="section-number">03</span>
+
+                    <p class="eyebrow">
+                        La nostra storia
+                    </p>
+
+                    <h2>
+                        Un po'<br>
+                        di Noi
+                    </h2>
+
+                </div>
+
+
+                <div class="story-image reveal">
+
+                    <img src="images/foto1 (1).jpeg"
+                         alt="La nostra storia"
+                         loading="lazy">
+
+                </div>
+
+
+                <div class="story-text reveal">
+
+                    <p class="story-lead">
+                        Una storia iniziata in due,
+                        che oggi vogliamo celebrare
+                        insieme alle persone che amiamo.
+                    </p>
+
+                    <p>
+                        Qui potremo raccontare la vostra storia:
+                        come vi siete conosciuti, i momenti
+                        più importanti e tutto ciò che vi ha
+                        portato fino a questo giorno.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             LISTA NOZZE
+        ========================== -->
+
+        <section id="lista" class="section wedding-list-section">
+
+            <div class="section-container">
+
+                <div class="section-heading reveal">
+
+                    <span class="section-number">04</span>
+
+                    <p class="eyebrow">
+                        Un pensiero per noi
+                    </p>
+
+                    <h2>
+                        Lista<br>
+                        Nozze
+                    </h2>
+
+                </div>
+
+
+                <div class="wedding-list-content reveal">
+
+                    <p class="wedding-list-intro">
+                        La vostra presenza sarà per noi
+                        il regalo più grande.
+                    </p>
+
+                    <p>
+                        Se desiderate accompagnarci con
+                        un pensiero, qui inseriremo tutte
+                        le informazioni relative alla
+                        nostra lista nozze.
+                    </p>
+
+                    <a href="#"
+                       class="primary-button">
+                        Scopri la Lista Nozze
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="site-footer">
+
+        <img src="images/logo.png"
+             alt="Matrimonio"
+             class="footer-logo">
+
+        <p>
+            Con amore
+        </p>
+
+        <span>
+            ♡
+        </span>
+
+    </footer>
+
+
+    <!-- JavaScript -->
     <script src="script.js"></script>
+
 </body>
 </html>
