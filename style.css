@@ -313,6 +313,8 @@ section {
     text-align: center;
 
     padding: 40px 10px;
+  
+    transform: translateY(50px);
 }
 
 
