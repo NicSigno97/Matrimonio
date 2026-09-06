@@ -180,3 +180,66 @@ window.addEventListener(
         passive: true
     }
 );
+
+/* =========================================
+   COLORE MENU IN BASE ALLA SEZIONE
+========================================= */
+
+const header = document.querySelector(".site-header");
+const menuButtonLines = document.querySelectorAll(".menu-button span");
+
+const sections = document.querySelectorAll("main section");
+
+
+const colorObserver = new IntersectionObserver(
+    (entries) => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                const section = entry.target;
+
+                /*
+                 * Se la sezione ha sfondo scuro,
+                 * il menu diventa bianco.
+                 */
+
+                const darkSections = [
+                    "home",
+                    "lista"
+                ];
+
+                if (darkSections.includes(section.id)) {
+
+                    menuButtonLines.forEach(line => {
+                        line.style.background = "#ffffff";
+                    });
+
+                } else {
+
+                    /*
+                     * Sezione chiara:
+                     * menu blu.
+                     */
+
+                    menuButtonLines.forEach(line => {
+                        line.style.background = "#17324d";
+                    });
+
+                }
+
+            }
+
+        });
+
+    },
+    {
+        threshold: 0.45
+    }
+);
+
+
+sections.forEach(section => {
+    colorObserver.observe(section);
+});
