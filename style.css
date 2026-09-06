@@ -14,8 +14,10 @@
     --blue-dark: #24364b;
     --blue: #7894b0;
     --blue-light: #eef3f7;
+
     --text: #33485d;
     --text-light: #68798a;
+
     --white: #ffffff;
     --border: #e1e7ec;
 
@@ -66,6 +68,7 @@ button {
 
 .header {
     position: fixed;
+
     top: 0;
     left: 0;
 
@@ -126,11 +129,14 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: center;
+
     gap: 6px;
 
     cursor: pointer;
 
     backdrop-filter: blur(8px);
+
+    z-index: 1100;
 }
 
 .menu-toggle span {
@@ -425,7 +431,7 @@ section {
 
 
 /* =====================================================
-   LINEA DECORATIVA
+   LINEE DECORATIVE
 ===================================================== */
 
 .decorative-line {
@@ -455,7 +461,7 @@ section {
 
 
 /* =====================================================
-   SCROLL
+   SCROLL BUTTON
 ===================================================== */
 
 .scroll-button {
@@ -477,6 +483,7 @@ section {
 
 .scroll-button span {
     font-size: 28px;
+
     line-height: 1;
 }
 
@@ -528,6 +535,7 @@ section {
 
 /* =====================================================
    EVENTO
+   STRUTTURA CORRETTA
 ===================================================== */
 
 .event-grid {
@@ -535,17 +543,26 @@ section {
 
     grid-template-columns: 1fr;
 
-    gap: 65px;
+    gap: 55px;
 
-    align-items: center;
+    width: 100%;
+
+    align-items: start;
 }
 
+
+/* =====================================================
+   IMMAGINE EVENTO
+===================================================== */
+
 .event-image {
-    position: relative;
+    width: 100%;
 
     overflow: hidden;
 
     border-radius: 4px;
+
+    position: relative;
 }
 
 .event-image::after {
@@ -558,9 +575,15 @@ section {
     border: 1px solid rgba(255,255,255,0.55);
 
     pointer-events: none;
+
+    z-index: 2;
 }
 
 .event-image img {
+    display: block;
+
+    width: 100%;
+
     aspect-ratio: 4 / 5;
 
     object-fit: cover;
@@ -578,21 +601,38 @@ section {
 ===================================================== */
 
 .event-info {
+    width: 100%;
+
     display: flex;
 
     flex-direction: column;
 
     gap: 0;
+
+    margin: 0;
+
+    padding: 0;
 }
 
+
+/* =====================================================
+   SINGOLA INFORMAZIONE
+===================================================== */
+
 .info-item {
+    width: 100%;
+
     display: grid;
 
-    grid-template-columns: 55px 1fr;
+    grid-template-columns: 50px minmax(0, 1fr);
 
-    gap: 20px;
+    align-items: start;
 
-    padding: 30px 0;
+    column-gap: 20px;
+
+    padding: 28px 0;
+
+    margin: 0;
 
     border-bottom: 1px solid var(--border);
 }
@@ -601,32 +641,57 @@ section {
     padding-top: 0;
 }
 
+
+/* =====================================================
+   NUMERO
+===================================================== */
+
 .info-number {
+    display: block;
+
     font-family: var(--serif);
 
-    font-size: 22px;
+    font-size: 21px;
+
+    line-height: 1.2;
 
     color: var(--blue);
+
+    padding-top: 3px;
 }
 
+
+/* =====================================================
+   TITOLI INFO
+===================================================== */
+
 .info-item h3 {
+    margin: 0 0 10px 0;
+
     font-family: var(--serif);
 
-    font-size: 32px;
+    font-size: 30px;
+
+    line-height: 1.15;
 
     font-weight: 500;
-
-    margin-bottom: 12px;
 
     color: var(--blue-dark);
 }
 
-.info-item p {
-    color: var(--text-light);
 
-    line-height: 1.8;
+/* =====================================================
+   TESTO INFO
+===================================================== */
+
+.info-item p {
+    margin: 0;
 
     font-size: 17px;
+
+    line-height: 1.75;
+
+    color: var(--text-light);
 }
 
 
@@ -640,6 +705,18 @@ section {
     margin: 0 auto;
 
     text-align: center;
+}
+
+.story::before {
+    content: "✦";
+
+    display: block;
+
+    color: var(--blue);
+
+    font-size: 22px;
+
+    margin-bottom: 30px;
 }
 
 .story-large {
@@ -668,23 +745,6 @@ section {
 
 
 /* =====================================================
-   DECORAZIONE STORIA
-===================================================== */
-
-.story::before {
-    content: "✦";
-
-    display: block;
-
-    color: var(--blue);
-
-    font-size: 22px;
-
-    margin-bottom: 30px;
-}
-
-
-/* =====================================================
    LISTA NOZZE
 ===================================================== */
 
@@ -694,6 +754,7 @@ section {
     min-height: 90vh;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -743,6 +804,7 @@ section {
     z-index: 2;
 
     width: 90%;
+
     max-width: 800px;
 }
 
@@ -853,6 +915,7 @@ section {
 
 .map-container {
     width: 92%;
+
     max-width: 850px;
 
     margin: 0 auto 40px;
@@ -908,7 +971,8 @@ section {
         background 0.3s ease,
         transform 0.3s ease;
 
-    box-shadow: 0 10px 25px rgba(36,54,75,0.18);
+    box-shadow:
+        0 10px 25px rgba(36,54,75,0.18);
 }
 
 .map-button:hover {
@@ -952,7 +1016,7 @@ section {
 
 
 /* =====================================================
-   ANIMAZIONE
+   ANIMAZIONE SCROLL
 ===================================================== */
 
 .reveal {
@@ -980,6 +1044,7 @@ section {
 
     .header {
         padding-left: 40px;
+
         padding-right: 40px;
     }
 
@@ -991,15 +1056,35 @@ section {
         padding: 150px 50px;
     }
 
-    .event-grid {
-        grid-template-columns: 1fr 1fr;
 
-        gap: 75px;
+    /* EVENTO */
+
+    .event-grid {
+        grid-template-columns:
+            minmax(280px, 1fr)
+            minmax(300px, 1fr);
+
+        column-gap: 65px;
+
+        align-items: start;
+    }
+
+    .event-image {
+        position: sticky;
+
+        top: 130px;
     }
 
     .event-image img {
         aspect-ratio: 3 / 4;
+
+        height: auto;
+
+        object-fit: cover;
     }
+
+
+    /* TESTO HERO */
 
     .hero-text {
         font-size: 21px;
@@ -1018,6 +1103,7 @@ section {
         height: 100px;
 
         padding-left: 60px;
+
         padding-right: 60px;
     }
 
@@ -1027,31 +1113,78 @@ section {
 
     .menu-toggle {
         width: 52px;
+
         height: 52px;
     }
 
     .section {
         padding-top: 180px;
+
         padding-bottom: 180px;
     }
 
+
+    /* EVENTO DESKTOP */
+
     .event-grid {
-        grid-template-columns: minmax(400px, 520px) 1fr;
+        grid-template-columns:
+            minmax(400px, 520px)
+            minmax(400px, 1fr);
 
-        gap: 130px;
-    }
+        column-gap: 100px;
 
-    .event-image img {
-        height: 680px;
+        align-items: start;
     }
 
     .event-image {
-        max-height: 680px;
+        position: sticky;
+
+        top: 150px;
+
+        max-height: none;
     }
+
+    .event-image img {
+        width: 100%;
+
+        height: 650px;
+
+        aspect-ratio: auto;
+
+        object-fit: cover;
+    }
+
+    .event-info {
+        padding-top: 5px;
+    }
+
+    .info-item {
+        grid-template-columns:
+            55px
+            minmax(0, 1fr);
+
+        column-gap: 20px;
+
+        padding: 30px 0;
+    }
+
+    .info-item h3 {
+        font-size: 32px;
+    }
+
+    .info-item p {
+        font-size: 17px;
+    }
+
+
+    /* HERO */
 
     .hero-text {
         font-size: 21px;
     }
+
+
+    /* MAPPA */
 
     .map-container {
         max-width: 900px;
@@ -1060,6 +1193,7 @@ section {
     .map-container iframe {
         height: 480px;
     }
+
 }
 
 
@@ -1081,8 +1215,12 @@ section {
 
     .menu-toggle {
         width: 44px;
+
         height: 44px;
     }
+
+
+    /* HERO */
 
     .hero-image {
         inset: 0;
@@ -1119,11 +1257,17 @@ section {
         margin: 30px auto 40px;
     }
 
+
+    /* SEZIONI */
+
     .section {
         min-height: auto;
 
         padding: 95px 22px;
     }
+
+
+    /* TITOLI */
 
     .section-title {
         margin-bottom: 50px;
@@ -1139,28 +1283,73 @@ section {
         font-size: 3.6rem;
     }
 
+
+    /* =================================================
+       EVENTO MOBILE
+    ================================================= */
+
     .event-grid {
-        gap: 50px;
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 45px;
+
+        align-items: stretch;
+    }
+
+    .event-image {
+        width: 100%;
+
+        position: relative;
+
+        top: auto;
     }
 
     .event-image img {
+        width: 100%;
+
+        height: auto;
+
         aspect-ratio: 4 / 5;
+
+        object-fit: cover;
+    }
+
+    .event-info {
+        width: 100%;
+
+        padding: 0;
     }
 
     .info-item {
-        grid-template-columns: 40px 1fr;
+        width: 100%;
 
-        gap: 12px;
+        grid-template-columns:
+            38px
+            minmax(0, 1fr);
 
-        padding: 25px 0;
+        column-gap: 14px;
+
+        padding: 24px 0;
+    }
+
+    .info-item:first-child {
+        padding-top: 0;
     }
 
     .info-number {
-        font-size: 19px;
+        font-size: 18px;
+
+        padding-top: 2px;
     }
 
     .info-item h3 {
         font-size: 27px;
+
+        line-height: 1.15;
+
+        margin-bottom: 9px;
     }
 
     .info-item p {
@@ -1168,6 +1357,9 @@ section {
 
         line-height: 1.75;
     }
+
+
+    /* STORIA */
 
     .story-large {
         font-size: 2.8rem;
@@ -1178,6 +1370,9 @@ section {
 
         line-height: 1.85;
     }
+
+
+    /* LISTA NOZZE */
 
     .registry-preview {
         min-height: 80vh;
@@ -1193,12 +1388,18 @@ section {
         line-height: 1.8;
     }
 
+
+    /* BUTTON */
+
     .button-light,
     .map-button {
         font-size: 13px;
 
         padding: 16px 27px;
     }
+
+
+    /* MAPPA */
 
     .map-section {
         padding: 90px 20px;
@@ -1228,6 +1429,9 @@ section {
         height: 320px;
     }
 
+
+    /* FOOTER */
+
     .footer {
         padding: 55px 20px;
     }
@@ -1253,6 +1457,7 @@ section {
     *::before,
     *::after {
         transition-duration: 0.01ms !important;
+
         animation-duration: 0.01ms !important;
     }
 
