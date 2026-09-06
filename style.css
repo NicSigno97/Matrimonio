@@ -705,7 +705,7 @@ section {
 .hero-image {
     inset: 0 !important;
     background-size: cover !important;
-    background-position: 80% 50%!important;
+    background-position: 75% 50%!important;
     transform: none !important;
 }
 /* =====================================================
