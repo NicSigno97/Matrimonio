@@ -1,67 +1,83 @@
+```html
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>Il nostro Matrimonio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta
         name="description"
-        content="Il nostro matrimonio"
+        content="Il nostro matrimonio — tutte le informazioni sul nostro giorno speciale."
     >
 
-    <!--
-        CSS
-        Il parametro ?v=2 forza il browser
-        a scaricare la nuova versione del file.
-    -->
+    <meta name="theme-color" content="#172a41">
+
+    <title>Il nostro matrimonio</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap"
         rel="stylesheet"
-        href="style.css?v=2"
     >
 
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
-
-    <!-- ==================================================
+    <!-- =====================================================
          HEADER
-    =================================================== -->
+    ====================================================== -->
 
-    <header class="header">
+    <header class="site-header" id="siteHeader">
 
-        <a
-            href="#home"
-            class="logo-link"
-            aria-label="Torna alla Home"
-        >
-
+        <a href="#home" class="brand" aria-label="Torna alla Home">
             <img
                 src="images/logo.png"
-                alt="Logo"
-                class="logo"
+                alt="Logo degli sposi"
             >
-
         </a>
 
+        <!-- NAVIGAZIONE DESKTOP -->
 
-        <!-- HAMBURGER -->
+        <nav class="desktop-nav" aria-label="Navigazione principale">
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#location">
+                Location
+            </a>
+
+            <a href="#evento">
+                Evento
+            </a>
+
+            <a href="#storia">
+                La nostra storia
+            </a>
+
+            <a href="#lista-nozze">
+                Lista nozze
+            </a>
+
+        </nav>
+
+
+        <!-- MENU MOBILE -->
 
         <button
             class="menu-toggle"
             id="menuToggle"
+            type="button"
             aria-label="Apri menu"
             aria-expanded="false"
-            type="button"
+            aria-controls="mobileMenu"
         >
 
             <span></span>
@@ -73,117 +89,152 @@
     </header>
 
 
-
-    <!-- ==================================================
-         MENU LATERALE
-    =================================================== -->
+    <!-- =====================================================
+         MENU MOBILE
+    ====================================================== -->
 
     <div
-        class="menu-overlay"
-        id="menuOverlay"
+        class="menu-backdrop"
+        id="menuBackdrop"
     ></div>
 
 
-    <nav
-        class="side-menu"
-        id="sideMenu"
-        aria-label="Menu principale"
+    <aside
+        class="mobile-menu"
+        id="mobileMenu"
+        aria-label="Menu mobile"
+        aria-hidden="true"
     >
 
         <button
             class="menu-close"
             id="menuClose"
-            aria-label="Chiudi menu"
             type="button"
+            aria-label="Chiudi menu"
         >
             ×
         </button>
 
 
-        <ul>
-
-            <li>
-                <a href="#home">
-                    Home
-                </a>
-            </li>
+        <p class="menu-kicker">
+            IL NOSTRO GIORNO
+        </p>
 
 
-            <li>
-                <a href="#evento">
-                    Informazioni sull'Evento
-                </a>
-            </li>
+        <nav>
 
+            <a href="#home">
+                Home
+            </a>
 
-            <li>
-                <a href="#noi">
-                    Un po' di Noi
-                </a>
-            </li>
+            <a href="#location">
+                Location
+            </a>
 
+            <a href="#evento">
+                Informazioni sull'evento
+            </a>
 
-            <li>
-                <a href="lista-nozze.html">
-                    Lista Nozze
-                </a>
-            </li>
+            <a href="#storia">
+                La nostra storia
+            </a>
 
-        </ul>
+            <a href="#lista-nozze">
+                Lista nozze
+            </a>
 
-    </nav>
+        </nav>
+
+    </aside>
 
 
 
-    <!-- ==================================================
-         CONTENUTO PRINCIPALE
-    =================================================== -->
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
 
     <main>
 
 
-        <!-- ==================================================
+        <!-- =================================================
              HOME
-        =================================================== -->
+        ================================================== -->
 
         <section
+            class="hero"
             id="home"
-            class="hero section-dark"
         >
 
-            <div class="hero-image"></div>
+            <!-- Immagine di sfondo -->
 
-            <div class="hero-overlay"></div>
+            <div
+                class="hero-image"
+                aria-hidden="true"
+            ></div>
 
+
+            <!-- Overlay -->
+
+            <div
+                class="hero-overlay"
+                aria-hidden="true"
+            ></div>
+
+
+            <!-- Contenuto -->
 
             <div class="hero-content reveal">
 
-                <p class="small-title">
+                <p class="eyebrow eyebrow-light">
                     IL NOSTRO GIORNO
                 </p>
 
 
                 <h1>
-                    Il nostro<br>
-                    Matrimonio
+
+                    NOME
+                    <br>
+
+                    <em>&amp;</em>
+
+                    <br>
+
+                    NOME
+
                 </h1>
 
 
-                <div class="decorative-line"></div>
+                <div
+                    class="ornament"
+                    aria-hidden="true"
+                ></div>
 
 
-                <p class="hero-text">
-                    Una giornata speciale da vivere
-                    insieme alle persone che amiamo.
+                <p class="hero-date">
+                    DATA DEL MATRIMONIO
+                </p>
+
+
+                <p class="hero-intro">
+
+                    Siamo felici di condividere
+                    con voi uno dei giorni più importanti
+                    della nostra vita.
+
                 </p>
 
 
                 <a
                     href="#evento"
-                    class="scroll-button"
+                    class="button button-light"
                 >
-                    Scopri di più
-                    <span>↓</span>
+
+                    Scopri il nostro giorno
+
+                    <span aria-hidden="true">
+                        ↓
+                    </span>
+
                 </a>
 
             </div>
@@ -192,13 +243,13 @@
 
 
 
-        <!-- ==================================================
-             INFORMAZIONI EVENTO
-        =================================================== -->
+        <!-- =================================================
+             LOCATION
+        ================================================== -->
 
         <section
-            id="evento"
-            class="section section-light"
+            class="section location-section"
+            id="location"
         >
 
             <div class="container">
@@ -206,76 +257,121 @@
 
                 <!-- TITOLO -->
 
-                <div class="section-title reveal">
+                <div class="section-heading reveal">
 
                     <p class="eyebrow">
-                        IL GRANDE GIORNO
+                        DOVE CI TROVIAMO
                     </p>
 
 
                     <h2>
-                        Informazioni<br>
-                        sull'Evento
+
+                        La
+                        <em>Location</em>
+
                     </h2>
 
 
-                    <div class="blue-line"></div>
+                    <div class="rule"></div>
 
                 </div>
 
 
-                        <!-- RICEVIMENTO -->
 
-                        <div class="info-item">
+                <!-- CONTENUTO -->
 
-                            <span class="info-number">
-                                01
-                            </span>
-                                
-                                <h3>
-                                    Rito e Ricevimento
-                                </h3>
+                <div class="location-grid">
 
 
-                                <p>
-                                    La celebrazione del nostro Matrimonio sarà un Rito civile direttamente in Location.<br>
-                                    Al termine del Rito avrenno inizio i festeggiamenti nella stesso Luogo.
-                                    <br>
-                                    <br>
-                                    Nel frattempo che Noi novelli Sposini verremo rapiti per qualche fotina, potrete iniziare iniziare dalle isole Aperitivo.
-                                    <br>
-                                </p>
+                    <!-- FOTO -->
 
-                            </div>
+                    <div class="location-photo reveal">
+
+                        <img
+                            src="images/location.jpeg"
+                            alt="La location del matrimonio"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+
+
+                    <!-- INFORMAZIONI -->
+
+                    <div class="location-content reveal">
+
+                        <p class="location-label">
+                            IL RICEVIMENTO
+                        </p>
+
+
+                        <h3>
+                            NOME LOCATION
+                        </h3>
+
+
+                        <p class="location-address">
+
+                            Via XXXXX, XX
+                            <br>
+
+                            CAP Città (Provincia)
+
+                        </p>
+
+
+
+                        <!-- MAPPA -->
+
+                        <div class="map-wrapper">
+
+                            <iframe
+                                title="Mappa della location"
+                                src="https://www.google.com/maps?q=Italia&output=embed"
+                                loading="lazy"
+                                allowfullscreen
+                                referrerpolicy="no-referrer-when-downgrade"
+                            ></iframe>
 
                         </div>
 
 
 
-                        <!-- ORARIO -->
+                        <!-- PULSANTI MAPPA -->
 
-                        <div class="info-item">
+                        <div class="map-buttons">
 
-                            <span class="info-number">
-                                02
-                            </span>
+                            <a
+                                class="map-button map-button-google"
+                                href="https://www.google.com/maps/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+
+                                Google Maps
+
+                                <span aria-hidden="true">
+                                    ↗
+                                </span>
+
+                            </a>
 
 
-                            <div>
+                            <a
+                                class="map-button map-button-apple"
+                                href="https://maps.apple.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
 
-                                <h3>
-                                    Orario
-                                </h3>
+                                Mappe di Apple
 
+                                <span aria-hidden="true">
+                                    ↗
+                                </span>
 
-                                <p>
-                                    L'inizio del Rito è previsto per le 12:30 - si consiglia di arrivare almeno 30 minuti prima.
-                                    <br>
-                                    <br>
-                                    Il termine del festeggiamenti è previsto per le 21:30/22:00
-                                </p>
-
-                            </div>
+                            </a>
 
                         </div>
 
@@ -287,51 +383,15 @@
 
         </section>
 
-        <!-- ==================================================
-             LOCATION
-        =================================================== -->
-<section class="map-section">
 
-    <div class="section-title">
-        <span>DOVE CI TROVIAMO</span>
-        <h2>Locanda Armonia</h2>
-        <p>Via Redona, 40 — 24069 Trescore Balneario (BG)</p>
-    </div>
 
-    <div class="map-container">
-        <iframe
-            src="https://www.google.com/maps?q=Locanda+Armonia,+Via+Redona+40,+24069+Trescore+Balneario+BG&output=embed"
-            loading="lazy"
-            allowfullscreen
-            referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-    </div>
-
-   <div class="map-buttons">
-    <a href="https://www.google.com/maps/search/?api=1&query=Locanda+Armonia%2C+Via+Redona+40%2C+24069+Trescore+Balneario+BG"
-       target="_blank"
-       rel="noopener"
-       class="map-button">
-        Apri con Google Maps
-    </a>
-
-    <a href="https://maps.apple.com/?address=Via%20Redona%2040%2C%2024069%20Trescore%20Balneario%20BG%2C%20Italia"
-       target="_blank"
-       rel="noopener"
-       class="apple-map-button">
-        Apri con Mappe di Apple
-    </a>
-</div>
-
-</section>
-
-        <!-- ==================================================
-             UN PO' DI NOI
-        =================================================== -->
+        <!-- =================================================
+             INFORMAZIONI SULL'EVENTO
+        ================================================== -->
 
         <section
-            id="noi"
-            class="section section-blue"
+            class="section event-section"
+            id="evento"
         >
 
             <div class="container">
@@ -339,49 +399,154 @@
 
                 <!-- TITOLO -->
 
-                <div class="section-title reveal">
+                <div class="section-heading reveal">
 
                     <p class="eyebrow">
-                        LA NOSTRA STORIA
+                        IL GRANDE GIORNO
                     </p>
 
 
                     <h2>
-                        Un po'<br>
-                        di Noi
+
+                        Informazioni
+                        <br>
+
+                        <em>sull'evento</em>
+
                     </h2>
 
 
-                    <div class="white-line"></div>
+                    <div class="rule"></div>
 
                 </div>
 
 
 
-                <!-- STORIA -->
+                <!-- EVENT GRID -->
 
-                <div class="story reveal">
-
-
-                    <p class="story-large">
-                        Due persone, una storia,
-                        mille momenti e un futuro
-                        tutto da vivere insieme.
-                    </p>
+                <div class="event-grid">
 
 
-                    <p>
-                        Qui possiamo raccontare la nostra storia,
-                        come ci siamo conosciuti, i momenti più
-                        importanti e tutto ciò che ci ha portati
-                        fino a questo giorno speciale.
-                    </p>
+                    <!-- DATA -->
+
+                    <article class="event-card reveal">
+
+                        <span class="event-number">
+                            01
+                        </span>
 
 
-                    <p>
-                        Sarà bellissimo condividere questo momento
-                        con tutte le persone che amiamo.
-                    </p>
+                        <p class="event-label">
+                            DATA
+                        </p>
+
+
+                        <h3>
+                            XX · XX · 202X
+                        </h3>
+
+
+                        <p>
+
+                            Segnate questa data sul calendario.
+                            Non vediamo l'ora di festeggiare
+                            insieme a voi.
+
+                        </p>
+
+                    </article>
+
+
+
+                    <!-- CERIMONIA -->
+
+                    <article class="event-card reveal">
+
+                        <span class="event-number">
+                            02
+                        </span>
+
+
+                        <p class="event-label">
+                            CERIMONIA
+                        </p>
+
+
+                        <h3>
+                            Ore XX:XX
+                        </h3>
+
+
+                        <p>
+
+                            La cerimonia si terrà presso
+                            la location indicata nella sezione
+                            dedicata.
+
+                        </p>
+
+                    </article>
+
+
+
+                    <!-- RICEVIMENTO -->
+
+                    <article class="event-card reveal">
+
+                        <span class="event-number">
+                            03
+                        </span>
+
+
+                        <p class="event-label">
+                            RICEVIMENTO
+                        </p>
+
+
+                        <h3>
+                            A seguire
+                        </h3>
+
+
+                        <p>
+
+                            Dopo la cerimonia inizieranno
+                            aperitivo, ricevimento e
+                            festeggiamenti.
+
+                        </p>
+
+                    </article>
+
+
+
+                    <!-- INFORMAZIONI -->
+
+                    <article class="event-card reveal">
+
+                        <span class="event-number">
+                            04
+                        </span>
+
+
+                        <p class="event-label">
+                            INFORMAZIONI UTILI
+                        </p>
+
+
+                        <h3>
+                            Dress Code
+                        </h3>
+
+
+                        <p>
+
+                            Qui inseriremo tutte le informazioni
+                            utili per vivere al meglio la giornata.
+
+                        </p>
+
+                    </article>
 
                 </div>
 
@@ -391,47 +556,259 @@
 
 
 
-        <!-- ==================================================
-             ANTEPRIMA LISTA NOZZE
-        =================================================== -->
+        <!-- =================================================
+             LA NOSTRA STORIA
+        ================================================== -->
 
         <section
-            id="lista"
-            class="section registry-preview section-dark"
+            class="section story-section"
+            id="storia"
         >
 
-            <div class="registry-background"></div>
+            <div class="container story-container">
 
-            <div class="registry-overlay"></div>
+
+                <!-- TITOLO -->
+
+                <div class="section-heading section-heading-light reveal">
+
+                    <p class="eyebrow">
+                        LA NOSTRA STORIA
+                    </p>
+
+
+                    <h2>
+
+                        Un po' di
+                        <em>noi</em>
+
+                    </h2>
+
+
+                    <div class="rule rule-light"></div>
+
+                </div>
+
+
+
+                <!-- INTRO -->
+
+                <div class="story-intro reveal">
+
+
+                    <p class="story-quote">
+
+                        Due persone,
+                        una storia,
+                        mille momenti.
+
+                    </p>
+
+
+                    <p>
+
+                        Qui racconteremo la nostra storia:
+                        come ci siamo conosciuti, i momenti
+                        più importanti e tutti quei piccoli
+                        ricordi che ci hanno portati fino
+                        a questo giorno.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- TIMELINE -->
+
+                <div class="timeline">
+
+
+                    <!-- MOMENTO 1 -->
+
+                    <article class="timeline-item reveal">
+
+                        <span>
+                            01
+                        </span>
+
+
+                        <div>
+
+                            <p class="timeline-year">
+                                IL PRIMO INCONTRO
+                            </p>
+
+
+                            <h3>
+                                Da qui è iniziato tutto.
+                            </h3>
+
+
+                            <p>
+
+                                Inserire qui il racconto
+                                del vostro primo incontro.
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- MOMENTO 2 -->
+
+                    <article class="timeline-item reveal">
+
+                        <span>
+                            02
+                        </span>
+
+
+                        <div>
+
+                            <p class="timeline-year">
+                                INSIEME
+                            </p>
+
+
+                            <h3>
+                                Tanti ricordi da custodire.
+                            </h3>
+
+
+                            <p>
+
+                                Viaggi, risate, avventure
+                                e tutte quelle piccole cose
+                                che avete vissuto insieme.
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- MOMENTO 3 -->
+
+                    <article class="timeline-item reveal">
+
+                        <span>
+                            03
+                        </span>
+
+
+                        <div>
+
+                            <p class="timeline-year">
+                                IL NOSTRO FUTURO
+                            </p>
+
+
+                            <h3>
+                                Ed eccoci qui.
+                            </h3>
+
+
+                            <p>
+
+                                Pronti a iniziare un nuovo
+                                capitolo della nostra vita
+                                insieme.
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             LISTA NOZZE — INTRODUZIONE
+        ================================================== -->
+
+        <section
+            class="section registry-section"
+            id="lista-nozze"
+        >
+
+            <div
+                class="registry-image"
+                aria-hidden="true"
+            ></div>
+
+
+            <div
+                class="registry-overlay"
+                aria-hidden="true"
+            ></div>
 
 
             <div class="container registry-content reveal">
 
-                <p class="eyebrow">
-                    UN PICCOLO AIUTO PER IL NOSTRO FUTURO
+
+                <p class="eyebrow eyebrow-light">
+                    UN PICCOLO PENSIERO
                 </p>
 
 
                 <h2>
-                    Lista Nozze
+
+                    Lista
+                    <em>Nozze</em>
+
                 </h2>
 
 
-                <div class="white-line"></div>
+                <div
+                    class="ornament"
+                    aria-hidden="true"
+                ></div>
 
 
                 <p>
-                    Se desiderate accompagnarci in questo
-                    nuovo capitolo della nostra vita,
-                    abbiamo preparato una lista nozze.
+
+                    Se desiderate accompagnarci
+                    nel nostro nuovo capitolo,
+                    qui troverete tutte le informazioni
+                    sulla nostra lista nozze.
+
                 </p>
 
 
+                <!--
+
+                    IMPORTANTE:
+
+                    In futuro questo pulsante
+                    porterà alla pagina:
+
+                    lista-nozze.html
+
+                -->
+
                 <a
                     href="lista-nozze.html"
-                    class="button-light"
+                    class="button button-light"
                 >
-                    Vai alla Lista Nozze
+
+                    Scopri la lista nozze
+
+                    <span aria-hidden="true">
+                        →
+                    </span>
+
                 </a>
 
             </div>
@@ -442,33 +819,38 @@
 
 
 
-    <!-- ==================================================
+    <!-- =====================================================
          FOOTER
-    =================================================== -->
+    ====================================================== -->
 
-    <footer class="footer">
+    <footer class="site-footer">
+
+
+        <p class="footer-monogram">
+            N &amp; N
+        </p>
+
 
         <p>
-            Con amore ♡
+            Con amore, per sempre.
         </p>
 
 
-        <p class="footer-small">
-            Il nostro Matrimonio
-        </p>
+        <small>
+            Il nostro matrimonio
+        </small>
+
 
     </footer>
 
 
 
-    <!-- ==================================================
+    <!-- =====================================================
          JAVASCRIPT
-         ?v=2 = anti-cache
-    =================================================== -->
+    ====================================================== -->
 
-    <script src="script.js?v=2"></script>
-
+    <script src="script.js"></script>
 
 </body>
-
 </html>
+```
