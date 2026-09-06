@@ -729,6 +729,19 @@ section {
 
 
 /* =====================================================
+   SMARTPHONE
+===================================================== */
+
+.hero-image {
+    position: absolute;
+    inset: -5%;
+    background-image: url("images/foto1 (1).jpeg");
+    background-size: cover;
+    background-position: 70% 50% center;
+    transform: scale(1.05);
+}
+
+/* =====================================================
    TABLET
 ===================================================== */
 
