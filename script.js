@@ -1,154 +1,158 @@
-/* =========================================
+/* =====================================================
    MENU
-========================================= */
+===================================================== */
 
-const menuButton = document.getElementById("menuButton");
-const closeMenu = document.getElementById("closeMenu");
+const menuToggle = document.getElementById("menuToggle");
+const menuClose = document.getElementById("menuClose");
 const sideMenu = document.getElementById("sideMenu");
 const menuOverlay = document.getElementById("menuOverlay");
-const menuLinks = document.querySelectorAll(".menu-link");
 
 
 function openMenu() {
 
-    sideMenu.classList.add("active");
-    menuOverlay.classList.add("active");
+    if (sideMenu) {
+        sideMenu.classList.add("active");
+    }
 
-    menuButton.setAttribute(
-        "aria-expanded",
-        "true"
-    );
+    if (menuOverlay) {
+        menuOverlay.classList.add("active");
+    }
 
     document.body.style.overflow = "hidden";
 }
 
 
-function closeSideMenu() {
+function closeMenu() {
 
-    sideMenu.classList.remove("active");
-    menuOverlay.classList.remove("active");
+    if (sideMenu) {
+        sideMenu.classList.remove("active");
+    }
 
-    menuButton.setAttribute(
-        "aria-expanded",
-        "false"
-    );
+    if (menuOverlay) {
+        menuOverlay.classList.remove("active");
+    }
 
     document.body.style.overflow = "";
 }
 
 
-menuButton.addEventListener(
-    "click",
-    openMenu
-);
+/* Apertura menu */
+
+if (menuToggle) {
+    menuToggle.addEventListener("click", openMenu);
+}
 
 
-closeMenu.addEventListener(
-    "click",
-    closeSideMenu
-);
+/* Chiusura con X */
+
+if (menuClose) {
+    menuClose.addEventListener("click", closeMenu);
+}
 
 
-menuOverlay.addEventListener(
-    "click",
-    closeSideMenu
-);
+/* Chiusura cliccando sull'overlay */
+
+if (menuOverlay) {
+    menuOverlay.addEventListener("click", closeMenu);
+}
 
 
-menuLinks.forEach(link => {
+/* =====================================================
+   LINK DEL MENU
+===================================================== */
 
-    link.addEventListener(
-        "click",
-        closeSideMenu
-    );
+const menuLinks = document.querySelectorAll(".side-menu a");
+
+menuLinks.forEach(function(link) {
+
+    link.addEventListener("click", function() {
+
+        closeMenu();
+
+    });
 
 });
 
 
-/* =========================================
-   CHIUDI MENU CON ESC
-========================================= */
+/* =====================================================
+   CHIUSURA CON ESC
+===================================================== */
 
-document.addEventListener(
-    "keydown",
-    event => {
+document.addEventListener("keydown", function(event) {
 
-        if (
-            event.key === "Escape" &&
-            sideMenu.classList.contains("active")
-        ) {
+    if (
+        event.key === "Escape" &&
+        sideMenu &&
+        sideMenu.classList.contains("active")
+    ) {
 
-            closeSideMenu();
-
-        }
+        closeMenu();
 
     }
-);
+
+});
 
 
-/* =========================================
+/* =====================================================
    ANIMAZIONI DURANTE LO SCROLL
-========================================= */
+===================================================== */
 
 const revealElements =
     document.querySelectorAll(".reveal");
 
 
-const revealObserver =
-    new IntersectionObserver(
-        entries => {
+if ("IntersectionObserver" in window) {
 
-            entries.forEach(entry => {
+    const revealObserver = new IntersectionObserver(
+
+        function(entries) {
+
+            entries.forEach(function(entry) {
 
                 if (entry.isIntersecting) {
 
-                    entry.target.classList.add(
-                        "visible"
-                    );
+                    entry.target.classList.add("visible");
 
-                    revealObserver.unobserve(
-                        entry.target
-                    );
+                    revealObserver.unobserve(entry.target);
 
                 }
 
             });
 
         },
+
         {
             threshold: 0.12
         }
+
     );
 
 
-revealElements.forEach(element => {
+    revealElements.forEach(function(element) {
 
-    revealObserver.observe(element);
+        revealObserver.observe(element);
 
-});
+    });
 
+} else {
 
-/* =========================================
-   AGGIUNTA RITARDO ALLE ANIMAZIONI
-========================================= */
+    /*
+       Se il browser non supporta IntersectionObserver,
+       mostriamo comunque tutti gli elementi.
+    */
 
-const cards =
-    document.querySelectorAll(".event-card");
+    revealElements.forEach(function(element) {
 
+        element.classList.add("visible");
 
-cards.forEach(
-    (card, index) => {
+    });
 
-        card.style.transitionDelay =
-            `${index * 120}ms`;
-
-    }
-);
+}
 
 
-/* =========================================
-   PARALLAX LEGGERO HERO
-========================================= */
+/* =====================================================
+   PARALLAX LEGGERO DELLA COPERTINA
+===================================================== */
 
 const heroImage =
     document.querySelector(".hero-image");
@@ -156,22 +160,19 @@ const heroImage =
 
 window.addEventListener(
     "scroll",
-    () => {
+    function() {
 
         if (!heroImage) {
             return;
         }
 
-        const scrollPosition =
-            window.scrollY;
+        const scrollPosition = window.scrollY;
 
-        if (
-            scrollPosition <
-            window.innerHeight
-        ) {
+
+        if (scrollPosition < window.innerHeight) {
 
             heroImage.style.transform =
-                `translateY(${scrollPosition * 0.15}px)`;
+                `scale(1.05) translateY(${scrollPosition * 0.12}px)`;
 
         }
 
@@ -181,65 +182,96 @@ window.addEventListener(
     }
 );
 
-/* =========================================
-   COLORE MENU IN BASE ALLA SEZIONE
-========================================= */
 
-const header = document.querySelector(".site-header");
-const menuButtonLines = document.querySelectorAll(".menu-button span");
+/* =====================================================
+   COLORE AUTOMATICO DEL MENU
+===================================================== */
 
-const sections = document.querySelectorAll("main section");
+const menuLines =
+    document.querySelectorAll(".menu-toggle span");
 
 
-const colorObserver = new IntersectionObserver(
-    (entries) => {
+const sections =
+    document.querySelectorAll("main section");
 
-        entries.forEach(entry => {
 
-            if (entry.isIntersecting) {
+function setMenuColor(color) {
 
-                const section = entry.target;
+    menuLines.forEach(function(line) {
+
+        line.style.background = color;
+
+    });
+
+}
+
+
+/*
+   All'inizio siamo sulla copertina,
+   quindi hamburger bianco.
+*/
+
+setMenuColor("white");
+
+
+if ("IntersectionObserver" in window) {
+
+    const colorObserver = new IntersectionObserver(
+
+        function(entries) {
+
+            entries.forEach(function(entry) {
+
+                if (!entry.isIntersecting) {
+                    return;
+                }
+
+
+                const section =
+                    entry.target;
+
 
                 /*
-                 * Se la sezione ha sfondo scuro,
-                 * il menu diventa bianco.
-                 */
+                   Sezione scura:
+                   hamburger bianco.
+                */
 
-                const darkSections = [
-                    "home",
-                    "lista"
-                ];
+                if (
+                    section.id === "home" ||
+                    section.id === "lista"
+                ) {
 
-                if (darkSections.includes(section.id)) {
-
-                    menuButtonLines.forEach(line => {
-                        line.style.background = "#ffffff";
-                    });
-
-                } else {
-
-                    /*
-                     * Sezione chiara:
-                     * menu blu.
-                     */
-
-                    menuButtonLines.forEach(line => {
-                        line.style.background = "#17324d";
-                    });
+                    setMenuColor("white");
 
                 }
 
-            }
 
-        });
+                /*
+                   Sezione chiara/blu:
+                   hamburger blu.
+                */
 
-    },
-    {
-        threshold: 0.45
-    }
-);
+                else {
+
+                    setMenuColor("#24364b");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.45
+        }
+
+    );
 
 
-sections.forEach(section => {
-    colorObserver.observe(section);
-});
+    sections.forEach(function(section) {
+
+        colorObserver.observe(section);
+
+    });
+
+}
