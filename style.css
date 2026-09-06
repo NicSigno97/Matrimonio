@@ -717,14 +717,13 @@ section {
 @media (max-width: 599px) {
 
     .hero-image {
-        inset: 0 !important;
-        background-size: auto 100% !important;
-        background-position: 50% 100% !important;
-        transform: none !important;
+        inset: 0;
+        background-size: cover;
+        background-position: center center;
+        transform: scale(1.05);
     }
 
 }
-
 /* =====================================================
    TABLET
 ===================================================== */
