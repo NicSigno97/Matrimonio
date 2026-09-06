@@ -279,25 +279,11 @@ section {
 
 .hero-image {
     position: absolute;
-
-    /*
-       Lasciamo un piccolo margine extra per evitare
-       bordi vuoti durante il movimento dell'immagine.
-    */
     inset: -5%;
-
     background-image: url("images/foto1 (1).jpeg");
-
     background-size: cover;
-
-    /*
-       Posizione iniziale.
-       Su desktop rimane centrata.
-    */
     background-position: center center;
-
     transform: scale(1.05);
-
     z-index: 0;
 }
 
