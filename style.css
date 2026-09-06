@@ -700,15 +700,11 @@ section {
    SMARTPHONE
 ===================================================== */
 
-@media (max-width: 599px) {
-
-    .hero-image {
-        inset: 0 !important;
-         background-size:150% auto !important;
-         background-position: 45% center !important;
-        transform: none !important;
-    }
-
+.hero-image {
+    inset: 0 !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    transform: none !important;
 }
 /* =====================================================
    TABLET
