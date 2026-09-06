@@ -705,7 +705,7 @@ section {
     .hero-image {
         inset: 0;
         background-size: cover;
-        background-position: center center;
+        background-position: 30% center;
         transform: scale(1.05);
     }
 
