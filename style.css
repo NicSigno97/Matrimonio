@@ -736,7 +736,7 @@ section {
     .hero-image {
         inset: 0 !important;
         background-size: cover !important;
-        background-position: 70% center !important;
+        background-position: 80% center !important;
         transform: scale(1.05) !important;
     }
 
