@@ -1,6 +1,13 @@
-/* =========================================
+/* =====================================================
+   FONT
+===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+
+/* =====================================================
    RESET
-========================================= */
+===================================================== */
 
 * {
     margin: 0;
@@ -10,23 +17,18 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px;
 }
 
 body {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Lato', sans-serif;
+    color: #24364b;
     background: #ffffff;
-    color: #1d3148;
     overflow-x: hidden;
 }
 
 img {
     display: block;
-    max-width: 100%;
-}
-
-button {
-    font: inherit;
+    width: 100%;
 }
 
 a {
@@ -34,355 +36,252 @@ a {
     text-decoration: none;
 }
 
-
-/* =========================================
-   COLORI
-========================================= */
-
-:root {
-
-    --white: #ffffff;
-
-    --blue-dark: #17324d;
-    --blue: #315b7d;
-    --blue-light: #edf3f7;
-
-    --text: #24384c;
-    --text-light: #6d7d8b;
-
-    --border: rgba(23, 50, 77, 0.15);
-
-    --serif: "Cormorant Garamond", serif;
-    --sans: "Montserrat", sans-serif;
+button {
+    font-family: inherit;
 }
 
 
-/* =========================================
+/* =====================================================
    HEADER
-========================================= */
+===================================================== */
 
-/* =========================================
-   HEADER TRASPARENTE
-========================================= */
-
-.site-header {
+.header {
     position: fixed;
 
     top: 0;
     left: 0;
 
     width: 100%;
-    height: 75px;
+
+    height: 80px;
+
+    padding: 15px 20px;
 
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 
-    padding: 8px 20px;
-
     z-index: 1000;
 
-    /* Completamente trasparente */
     background: transparent;
 
-    /* Nessun bordo */
-    border: none;
-
-    /* Nessuna ombra */
-    box-shadow: none;
+    pointer-events: none;
 }
 
 
-/* =========================================
+/* =====================================================
    LOGO
-========================================= */
+===================================================== */
 
-.header-logo {
-    display: flex;
-    align-items: center;
+.logo-link {
+    pointer-events: auto;
 
-    height: 100%;
+    display: block;
 }
 
-.header-logo img {
-    width: 90px;
+.logo {
+    width: 75px;
     height: auto;
 
     object-fit: contain;
 }
 
 
-/* =========================================
-   MENU HAMBURGER
-========================================= */
+/* =====================================================
+   HAMBURGER
+===================================================== */
 
-.menu-button {
-    width: 48px;
-    height: 48px;
+.menu-toggle {
+    pointer-events: auto;
+
+    border: none;
+
+    background: transparent;
+
+    width: 42px;
+    height: 42px;
+
+    padding: 8px;
 
     display: flex;
+
     flex-direction: column;
-    align-items: flex-end;
+
     justify-content: center;
 
     gap: 6px;
 
-    padding: 0;
-    margin: 0;
-
-    border: none;
-    outline: none;
-
-    background: transparent;
-
     cursor: pointer;
+
+    z-index: 1100;
 }
 
-
-/* Le tre linee del menu */
-
-.menu-button span {
+.menu-toggle span {
     display: block;
 
-    height: 1px;
+    width: 100%;
+    height: 2px;
 
-    background: #ffffff;
+    background: white;
 
     transition:
-        width 0.3s ease,
-        transform 0.3s ease;
+        transform 0.3s ease,
+        opacity 0.3s ease,
+        background 0.3s ease;
 }
 
 
-/* Linee */
-
-.menu-button span:nth-child(1) {
-    width: 28px;
-}
-
-.menu-button span:nth-child(2) {
-    width: 20px;
-}
-
-.menu-button span:nth-child(3) {
-    width: 28px;
-}
-
-
-/* Effetto hover */
-
-.menu-button:hover span:nth-child(2) {
-    width: 28px;
-}
-
-
-/* =========================================
-   MENU BUTTON
-========================================= */
-
-.menu-button {
-
-    width: 48px;
-    height: 48px;
-
-    border: 0;
-
-    background: transparent;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: flex-end;
-    justify-content: center;
-
-    gap: 5px;
-
-    cursor: pointer;
-}
-
-.menu-button span {
-
-    display: block;
-
-    height: 1px;
-
-    background: var(--blue-dark);
-
-    transition: 0.3s ease;
-}
-
-.menu-button span:nth-child(1) {
-    width: 28px;
-}
-
-.menu-button span:nth-child(2) {
-    width: 21px;
-}
-
-.menu-button span:nth-child(3) {
-    width: 28px;
-}
-
-
-/* =========================================
-   SIDE MENU
-========================================= */
+/* =====================================================
+   MENU LATERALE
+===================================================== */
 
 .side-menu {
-
     position: fixed;
 
     top: 0;
     right: 0;
 
-    width: min(88vw, 390px);
-    height: 100dvh;
+    width: min(340px, 88%);
 
-    background: var(--white);
+    height: 100vh;
 
-    z-index: 1100;
+    background: #ffffff;
 
-    padding:
-        30px
-        25px;
+    z-index: 1200;
+
+    padding: 100px 35px 40px;
 
     transform: translateX(100%);
 
-    transition:
-        transform 0.5s
-        cubic-bezier(.77,0,.18,1);
+    transition: transform 0.4s ease;
 
-    box-shadow:
-        -10px 0 40px
-        rgba(23, 50, 77, 0.12);
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.08);
 }
 
 .side-menu.active {
     transform: translateX(0);
 }
 
-.menu-overlay {
 
+.menu-close {
+    position: absolute;
+
+    top: 25px;
+    right: 25px;
+
+    width: 40px;
+    height: 40px;
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 38px;
+
+    font-weight: 300;
+
+    color: #24364b;
+
+    cursor: pointer;
+}
+
+
+.side-menu ul {
+    list-style: none;
+}
+
+.side-menu li {
+    margin-bottom: 30px;
+}
+
+.side-menu a {
+    font-family: 'Playfair Display', serif;
+
+    font-size: 25px;
+
+    color: #24364b;
+
+    transition: color 0.3s ease;
+}
+
+.side-menu a:hover {
+    color: #7894b0;
+}
+
+
+/* =====================================================
+   OVERLAY
+===================================================== */
+
+.menu-overlay {
     position: fixed;
 
     inset: 0;
 
-    background:
-        rgba(23, 50, 77, 0.35);
+    background: rgba(16, 31, 48, 0.45);
 
-    z-index: 1050;
+    z-index: 1150;
 
     opacity: 0;
 
     visibility: hidden;
 
     transition:
-        opacity 0.4s ease;
+        opacity 0.3s ease,
+        visibility 0.3s ease;
 }
 
 .menu-overlay.active {
-
     opacity: 1;
 
     visibility: visible;
 }
 
-.menu-header {
 
-    display: flex;
+/* =====================================================
+   SEZIONI
+===================================================== */
 
-    align-items: center;
-    justify-content: space-between;
-
-    padding-bottom: 25px;
-
-    border-bottom:
-        1px solid var(--border);
-
-    font-size: 11px;
-
-    letter-spacing: 0.25em;
-
-    color: var(--text-light);
+section {
+    position: relative;
 }
 
-.close-menu {
+.section {
+    min-height: 100vh;
 
-    border: 0;
-
-    background: transparent;
-
-    font-size: 32px;
-
-    line-height: 1;
-
-    font-weight: 200;
-
-    color: var(--blue-dark);
-
-    cursor: pointer;
+    padding: 120px 25px;
 }
 
-.side-menu ul {
-
-    list-style: none;
-
-    margin-top: 35px;
+.section-light {
+    background: #ffffff;
 }
 
-.side-menu li {
+.section-blue {
+    background: #7894b0;
 
-    border-bottom:
-        1px solid var(--border);
-}
-
-.menu-link {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 20px;
-
-    padding:
-        23px
-        0;
-
-    font-family: var(--serif);
-
-    font-size: 27px;
-
-    transition:
-        padding-left 0.3s ease,
-        color 0.3s ease;
-}
-
-.menu-link span {
-
-    font-family: var(--sans);
-
-    font-size: 10px;
-
-    color: var(--text-light);
-
-    letter-spacing: 0.1em;
-}
-
-.menu-link:hover {
-
-    padding-left: 8px;
-
-    color: var(--blue);
+    color: white;
 }
 
 
-/* =========================================
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.container {
+    width: 100%;
+
+    max-width: 1150px;
+
+    margin: 0 auto;
+}
+
+
+/* =====================================================
    HERO
-========================================= */
+===================================================== */
 
 .hero {
-
     position: relative;
 
     min-height: 100svh;
@@ -394,45 +293,26 @@ a {
 
     overflow: hidden;
 
-    background: var(--blue-dark);
-}
-
-.hero-background {
-
-    position: absolute;
-
-    inset: 0;
-
-    overflow: hidden;
+    color: white;
 }
 
 .hero-image {
+    position: absolute;
 
-    width: 100%;
-    height: 100%;
+    inset: -5%;
 
-    object-fit: cover;
+    background-image: url("images/foto1 (1).jpeg");
 
-    object-position: center;
+    background-size: cover;
 
-    animation:
-        heroZoom 12s
-        ease-out forwards;
-}
+    background-position: center;
 
-@keyframes heroZoom {
+    transform: scale(1.05);
 
-    from {
-        transform: scale(1.08);
-    }
-
-    to {
-        transform: scale(1);
-    }
+    z-index: 0;
 }
 
 .hero-overlay {
-
     position: absolute;
 
     inset: 0;
@@ -440,432 +320,343 @@ a {
     background:
         linear-gradient(
             to bottom,
-            rgba(23, 50, 77, 0.15),
-            rgba(23, 50, 77, 0.65)
+            rgba(0, 0, 0, 0.30),
+            rgba(0, 0, 0, 0.48)
         );
+
+    z-index: 1;
 }
 
 .hero-content {
-
     position: relative;
 
     z-index: 2;
 
     width: 90%;
 
-    max-width: 700px;
+    max-width: 800px;
 
     text-align: center;
 
-    color: white;
+    padding: 40px 10px;
 }
 
-.hero-logo {
 
-    width: min(150px, 42vw);
+.small-title,
+.eyebrow {
+    font-size: 12px;
 
-    margin:
-        0 auto 30px;
+    font-weight: 700;
 
-    filter:
-        brightness(0)
-        invert(1);
-}
+    letter-spacing: 0.25em;
 
-.hero-intro {
-
-    font-size: 10px;
-
-    letter-spacing: 0.3em;
-
-    text-transform: uppercase;
-
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .hero h1 {
+    font-family: 'Playfair Display', serif;
 
-    font-family: var(--serif);
+    font-size: clamp(3rem, 12vw, 7rem);
 
-    font-size: clamp(
-        55px,
-        15vw,
-        105px
-    );
+    line-height: 0.95;
 
-    line-height: 0.9;
+    font-weight: 500;
 
-    font-weight: 400;
-
-    margin-bottom: 25px;
+    letter-spacing: 0.01em;
 }
 
-.hero h1 span {
+.hero-text {
+    max-width: 500px;
 
-    font-size: 0.65em;
+    margin: 25px auto 35px;
 
-    font-style: italic;
+    font-size: 16px;
 
-    margin:
-        0 8px;
+    line-height: 1.7;
+
+    font-weight: 300;
 }
 
-.hero-date {
 
-    font-size: 12px;
+/* =====================================================
+   LINEE DECORATIVE
+===================================================== */
 
-    letter-spacing: 0.35em;
+.decorative-line {
+    width: 70px;
+
+    height: 1px;
+
+    background: white;
+
+    margin: 30px auto;
 }
 
-.scroll-indicator {
+.blue-line {
+    width: 60px;
 
-    position: absolute;
+    height: 2px;
 
-    top: calc(100vh - 120px);
+    background: #7894b0;
 
-    left: 50%;
+    margin-top: 25px;
+}
 
-    transform:
-        translateX(-50%);
+.white-line {
+    width: 60px;
 
-    display: flex;
+    height: 2px;
+
+    background: white;
+
+    margin-top: 25px;
+}
+
+
+/* =====================================================
+   SCROLL BUTTON
+===================================================== */
+
+.scroll-button {
+    display: inline-flex;
 
     flex-direction: column;
 
     align-items: center;
 
-    gap: 10px;
+    gap: 8px;
 
-    font-size: 9px;
+    font-size: 12px;
 
-    text-transform: uppercase;
-
-    letter-spacing: 0.2em;
-
-    white-space: nowrap;
-}
-
-.scroll-line {
-
-    width: 1px;
-
-    height: 40px;
-
-    background: white;
-
-    opacity: 0.7;
-
-    animation:
-        scrollLine 2s
-        infinite;
-}
-
-@keyframes scrollLine {
-
-    0% {
-        transform: scaleY(0);
-        transform-origin: top;
-    }
-
-    50% {
-        transform: scaleY(1);
-        transform-origin: top;
-    }
-
-    51% {
-        transform: scaleY(1);
-        transform-origin: bottom;
-    }
-
-    100% {
-        transform: scaleY(0);
-        transform-origin: bottom;
-    }
-}
-
-
-/* =========================================
-   SECTIONS
-========================================= */
-
-.section {
-
-    position: relative;
-
-    padding:
-        110px
-        22px;
-}
-
-.section-container {
-
-    width: 100%;
-
-    max-width: 1100px;
-
-    margin: 0 auto;
-}
-
-
-/* =========================================
-   TITOLI
-========================================= */
-
-.section-heading {
-
-    margin-bottom: 55px;
-}
-
-.section-number {
-
-    display: block;
-
-    font-size: 10px;
-
-    letter-spacing: 0.2em;
-
-    color: var(--text-light);
-
-    margin-bottom: 20px;
-}
-
-.eyebrow {
-
-    font-size: 10px;
-
-    letter-spacing: 0.25em;
+    letter-spacing: 0.15em;
 
     text-transform: uppercase;
 
-    color: var(--blue);
-
-    margin-bottom: 12px;
+    transition: transform 0.3s ease;
 }
 
-.section-heading h2 {
+.scroll-button span {
+    font-size: 22px;
 
-    font-family: var(--serif);
+    line-height: 1;
+}
 
-    font-weight: 400;
-
-    font-size: clamp(
-        48px,
-        13vw,
-        85px
-    );
-
-    line-height: 0.85;
-
-    color: var(--blue-dark);
+.scroll-button:hover {
+    transform: translateY(5px);
 }
 
 
-/* =========================================
+/* =====================================================
+   TITOLI SEZIONI
+===================================================== */
+
+.section-title {
+    margin-bottom: 70px;
+}
+
+.section-title h2 {
+    font-family: 'Playfair Display', serif;
+
+    font-size: clamp(2.8rem, 10vw, 5.5rem);
+
+    line-height: 0.95;
+
+    font-weight: 500;
+}
+
+
+/* =====================================================
    EVENTO
-========================================= */
-
-.event-section {
-
-    background:
-        var(--blue-light);
-}
+===================================================== */
 
 .event-grid {
-
     display: grid;
 
     grid-template-columns: 1fr;
 
-    gap: 18px;
+    gap: 50px;
 }
 
-.event-card {
-
-    padding: 35px 28px;
-
-    background:
-        rgba(255,255,255,0.85);
-
-    border:
-        1px solid
-        rgba(23, 50, 77, 0.08);
-
-    text-align: center;
+.event-image {
+    overflow: hidden;
 }
 
-.event-icon {
+.event-image img {
+    aspect-ratio: 4 / 5;
 
-    display: block;
-
-    font-family: var(--serif);
-
-    font-size: 35px;
-
-    margin-bottom: 15px;
-
-    color: var(--blue);
+    object-fit: cover;
 }
 
-.event-card h3 {
 
-    font-family: var(--serif);
+.event-info {
+    display: flex;
 
-    font-size: 32px;
+    flex-direction: column;
+
+    gap: 35px;
+}
+
+
+.info-item {
+    display: grid;
+
+    grid-template-columns: 45px 1fr;
+
+    gap: 15px;
+
+    border-bottom: 1px solid #e4e8ec;
+
+    padding-bottom: 30px;
+}
+
+.info-number {
+    font-family: 'Playfair Display', serif;
+
+    font-size: 18px;
+
+    color: #7894b0;
+}
+
+.info-item h3 {
+    font-family: 'Playfair Display', serif;
+
+    font-size: 25px;
 
     font-weight: 500;
 
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
-.event-card p {
+.info-item p {
+    color: #5c6c7d;
 
-    color: var(--text-light);
+    line-height: 1.7;
 
-    font-size: 13px;
-
-    line-height: 1.8;
-}
-
-.event-detail {
-
-    margin-top: 20px;
-
-    color: var(--blue-dark) !important;
-
-    font-size: 12px !important;
-
-    letter-spacing: 0.05em;
+    font-size: 15px;
 }
 
 
-/* =========================================
-   STORIA
-========================================= */
+/* =====================================================
+   LA NOSTRA STORIA
+===================================================== */
 
-.story-section {
+.story {
+    max-width: 750px;
 
-    background: white;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.story-image {
+.story-large {
+    font-family: 'Playfair Display', serif;
 
-    width: 100%;
+    font-size: clamp(2rem, 7vw, 3.5rem);
 
-    overflow: hidden;
+    line-height: 1.2;
 
     margin-bottom: 40px;
 }
 
-.story-image img {
+.story p:not(.story-large) {
+    font-size: 16px;
 
-    width: 100%;
+    line-height: 1.9;
 
-    aspect-ratio: 4 / 5;
-
-    object-fit: cover;
-
-    transition:
-        transform 1s ease;
-}
-
-.story-image:hover img {
-
-    transform: scale(1.03);
-}
-
-.story-text {
-
-    max-width: 650px;
-
-    margin: auto;
-}
-
-.story-text p {
-
-    color: var(--text-light);
-
-    font-size: 14px;
-
-    line-height: 2;
+    font-weight: 300;
 
     margin-bottom: 25px;
 }
 
-.story-text .story-lead {
 
-    font-family: var(--serif);
-
-    font-size: 29px;
-
-    line-height: 1.2;
-
-    color: var(--blue-dark);
-}
-
-
-/* =========================================
+/* =====================================================
    LISTA NOZZE
-========================================= */
+===================================================== */
 
-.wedding-list-section {
+.registry-preview {
+    min-height: 85vh;
 
-    background:
-        var(--blue-light);
+    display: flex;
+
+    align-items: center;
+
+    color: white;
+
+    overflow: hidden;
 }
 
-.wedding-list-content {
+.registry-background {
+    position: absolute;
 
-    max-width: 650px;
+    inset: 0;
 
-    margin: 0 auto;
+    background-image: url("images/foto1 (1).jpeg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    filter: saturate(0.8);
+
+    z-index: 0;
+}
+
+.registry-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(28, 49, 70, 0.70);
+
+    z-index: 1;
+}
+
+.registry-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 700px;
 
     text-align: center;
 }
 
-.wedding-list-content p {
+.registry-content h2 {
+    font-family: 'Playfair Display', serif;
 
-    font-size: 14px;
+    font-size: clamp(3rem, 10vw, 5.5rem);
 
-    line-height: 2;
+    font-weight: 500;
 
-    color: var(--text-light);
-
-    margin-bottom: 25px;
+    line-height: 1;
 }
 
-.wedding-list-content .wedding-list-intro {
+.registry-content > p:not(.eyebrow) {
+    max-width: 600px;
 
-    font-family: var(--serif);
+    margin: 30px auto;
 
-    font-size: 31px;
+    line-height: 1.8;
 
-    line-height: 1.2;
-
-    color: var(--blue-dark);
+    font-weight: 300;
 }
 
-.primary-button {
 
-    display: inline-flex;
+/* =====================================================
+   BUTTON
+===================================================== */
 
-    align-items: center;
-    justify-content: center;
-
-    min-height: 52px;
+.button-light {
+    display: inline-block;
 
     margin-top: 15px;
 
-    padding:
-        0 28px;
+    padding: 15px 28px;
 
-    border:
-        1px solid
-        var(--blue-dark);
+    border: 1px solid white;
 
-    color:
-        var(--blue-dark);
+    color: white;
 
-    font-size: 10px;
+    font-size: 12px;
 
     letter-spacing: 0.15em;
 
@@ -876,149 +667,168 @@ a {
         color 0.3s ease;
 }
 
-.primary-button:hover {
+.button-light:hover {
+    background: white;
 
-    background:
-        var(--blue-dark);
-
-    color: white;
+    color: #24364b;
 }
 
 
-/* =========================================
+/* =====================================================
    FOOTER
-========================================= */
+===================================================== */
 
-.site-footer {
+.footer {
+    background: #ffffff;
 
-    padding:
-        70px
-        20px;
+    color: #24364b;
 
     text-align: center;
 
-    background:
-        var(--blue-dark);
-
-    color: white;
+    padding: 50px 20px;
 }
 
-.footer-logo {
-
-    width: 100px;
-
-    margin:
-        0 auto 20px;
-
-    filter:
-        brightness(0)
-        invert(1);
-}
-
-.site-footer p {
-
-    font-family: var(--serif);
+.footer p:first-child {
+    font-family: 'Playfair Display', serif;
 
     font-size: 25px;
-
-    margin-bottom: 15px;
 }
 
-.site-footer span {
+.footer-small {
+    margin-top: 10px;
 
-    font-size: 20px;
+    font-size: 12px;
+
+    letter-spacing: 0.15em;
+
+    text-transform: uppercase;
+
+    opacity: 0.6;
 }
 
 
-/* =========================================
+/* =====================================================
    ANIMAZIONI SCROLL
-========================================= */
+===================================================== */
 
 .reveal {
-
     opacity: 0;
 
-    transform:
-        translateY(45px);
+    transform: translateY(40px);
 
     transition:
         opacity 0.9s ease,
-        transform 0.9s
-        cubic-bezier(.2,.7,.2,1);
+        transform 0.9s ease;
 }
 
 .reveal.visible {
-
     opacity: 1;
 
-    transform:
-        translateY(0);
+    transform: translateY(0);
 }
 
 
-/* =========================================
+/* =====================================================
    TABLET
-========================================= */
+===================================================== */
 
 @media (min-width: 600px) {
 
-    .section {
+    .header {
+        padding-left: 35px;
+        padding-right: 35px;
+    }
 
-        padding:
-            140px
-            40px;
+    .logo {
+        width: 90px;
+    }
+
+    .section {
+        padding: 140px 50px;
     }
 
     .event-grid {
+        grid-template-columns: 1fr 1fr;
 
-        grid-template-columns:
-            repeat(2, 1fr);
+        align-items: center;
+
+        gap: 80px;
     }
 
-    .story-image {
-
-        max-width: 750px;
-
-        margin-left: auto;
-        margin-right: auto;
+    .event-image img {
+        aspect-ratio: 3 / 4;
     }
 
 }
 
 
-/* =========================================
+/* =====================================================
    DESKTOP
-========================================= */
+===================================================== */
 
 @media (min-width: 900px) {
 
-    .site-header {
+    .header {
+        height: 100px;
 
-        height: 80px;
-
-        padding:
-            10px 45px;
+        padding-left: 55px;
+        padding-right: 55px;
     }
 
-    .header-logo img {
-
+    .logo {
         width: 105px;
     }
 
+    .menu-toggle {
+        width: 45px;
+        height: 45px;
+    }
+
     .section {
+        padding-top: 160px;
 
-        padding:
-            170px 50px;
+        padding-bottom: 160px;
     }
 
-    .section-heading {
-
-        margin-bottom: 80px;
+    .section-title {
+        margin-bottom: 90px;
     }
 
-    .story-image img {
-
-        aspect-ratio: 16 / 9;
+    .hero-text {
+        font-size: 18px;
     }
 
+    .event-grid {
+        grid-template-columns: minmax(350px, 500px) 1fr;
+
+        gap: 120px;
+    }
+
+    .event-image {
+        max-height: 650px;
+    }
+
+    .event-image img {
+        height: 650px;
+    }
+
+}
+
+
+/* =====================================================
+   ACCESSIBILITÀ
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
 }
