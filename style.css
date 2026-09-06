@@ -717,7 +717,8 @@ section {
 @media (max-width: 599px) {
 
     .hero-image {
-        background-position: 50% center;
+        background-position: 0% center !important;
+        background-size: cover !important;
     }
 
 }
